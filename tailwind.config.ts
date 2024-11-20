@@ -13,17 +13,26 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       animation: {
-        'fade-in': 'fadeIn 1s ease-out',
-        'slide-in-left': 'slideInLeft 1s ease-out',
+        'fade-in': 'fadeIn 2s ease-in-out',
+        'fade-out': 'fadeOut 1.5s ease-in-out',
+        
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0' },
+          '0%': { opacity: '0.7' },
+          '100%': { opacity: '1' },
+        },
+        fadeOut: {
+          '0%': { opacity: '0.7' },
           '100%': { opacity: '1' },
         },
     }
   },
   },
-  plugins: [],
+  variants: {
+    extend: {
+      animation: ['hover']
+    }
+  }
 };
 export default config;

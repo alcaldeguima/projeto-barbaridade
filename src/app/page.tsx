@@ -1,9 +1,8 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start bg-white">
-      <div className="w-screen h-screen flex items-center justify-center">
+    <main className="flex flex-col items-center justify-center bg-white w-screen h-screen">
+      <h1 className="text-4xl font-bold dark:text-white text-center mt-4">Mapa RS 1966</h1>
+      <div className="w-full h-full flex items-center justify-center overflow-hidden">
         {/* Para poder usar classes no svg é preciso chamar ele assim e usar os paths para criar os pontos*/}
         <svg
           version="1.1"
@@ -12,10 +11,13 @@ export default function Home() {
           xmlns="http://www.w3.org/2000/svg"
           className="max-w-full max-h-full object-contain p-10"
         >
-          {" "}
           <path
             className="fill-red-500 
+            cursor-pointer
+            hover:fill-violet-500
+            hover:animate-fade-in
             animate-fade-in 
+            animate-fade-out  
             animate-duration-3000 
             animate-delay-800
             animate-ease-in-out"
@@ -24,6 +26,7 @@ export default function Home() {
           />
         </svg>
       </div>
-      </main>
+
+    </main>
   );
 }
