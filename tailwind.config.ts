@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       animation: {
-        'fade-in': 'fadeIn 2s ease-in-out',
+        'fade-in': 'fadeIn 1s ease-in-out',
         'fade-out': 'fadeOut 1.5s ease-in-out',
         
       },
@@ -23,7 +23,7 @@ const config: Config = {
           '100%': { opacity: '1' },
         },
         fadeOut: {
-          '0%': { opacity: '0.7' },
+          '0%': { opacity: '0.5' },
           '100%': { opacity: '1' },
         },
     }
