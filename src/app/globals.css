@@ -4,7 +4,16 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+  --dark-green: #306437;
+  --middle-green: #4f7b58;
+  --light-green: #8ab8a2;
+  --yellow: #fee886;
+  --red: #cc3a3d;
+}
+
+.light-gradient {
+  background-image: linear-gradient(to bottom, #ffffff, var(--light-green));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,15 +21,23 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+
+  .light-gradient {
+    background-image: none;
+    background-color: #0a0a0a;
+  }
 }
+
+
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
