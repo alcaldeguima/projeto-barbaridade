@@ -1,12 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { pathMap} from '../app/constants/pathMap';
+import { pathMap } from "../app/constants/pathMap";
+import Modal from "./modal";
+import Municipio2ModalContent from "./municipio2ModalContent";
 
 function MapaRS() {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipVisible2, setTooltipVisible2] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleMouseEnter = () => setTooltipVisible(true);
   const handleMouseLeave = () => setTooltipVisible(false);
@@ -23,11 +27,14 @@ function MapaRS() {
 
   return (
     <div className="flex flex-col h-[95%] light-gradient pt-5">
-      <div id="mapaContainer" className="w-[95%] h-[95%] flex items-center animate-fade-in
+      <div
+        id="mapaContainer"
+        className="w-[95%] h-[95%] flex items-center animate-fade-in
               animate-fade-out  
               animate-duration-1000 
               animate-delay-800
-              animate-ease-in-out">
+              animate-ease-in-out"
+      >
         {/* Para poder usar classes no svg é preciso chamar ele assim e usar os paths para criar os pontos*/}
 
         <svg
@@ -44,23 +51,24 @@ function MapaRS() {
             className="fill-[--dark-green] 
             cursor-pointer"
             id="outline-rs"
-            d= {pathMap.RS}
+            d={pathMap.RS}
           />
           <path
             onMouseEnter={handleMouseEnter2}
             onMouseLeave={handleMouseLeave2}
             onMouseMove={handleMouseMove}
-            className="stroke-[--yellow]
-              stroke-1
-              fill-transparent
-              animate-pulse
-              cursor-pointer
-              hover:fill-[--yellow]
-              hover:animate-none
-              transition-colors 
-              duration-300 
-              ease-in-out"
+            className={`stroke-[--yellow]
+                        stroke-1
+                        ${modalOpen ? "fill-[--yellow]" : "fill-transparent"}
+                        animate-pulse
+                        cursor-pointer
+                        hover:fill-[--yellow]
+                        hover:animate-none
+                        transition-colors 
+                        duration-300 
+                        ease-in-out`}
             id="municipios-1"
+            onClick={() => setModalOpen(true)}
             d={pathMap.MUNICIPIO}
           />
         </svg>
@@ -77,9 +85,9 @@ function MapaRS() {
         )}
         {tooltipVisible2 && (
           <div
-            className="absolute px-2 py-1 bg-gray-800 text-white text-sm rounded pointer-events-none transition-opacity duration-200"
+            className="absolute px-2 py-1 bg-gray-800 text-white text-sm rounded cursor-pointer transition-opacity duration-200"
             style={{
-              top: tooltipPosition.y + 10, // Offset from mouse
+              top: tooltipPosition.y + 10,
               left: tooltipPosition.x + 10,
             }}
           >
@@ -87,6 +95,9 @@ function MapaRS() {
           </div>
         )}
       </div>
+      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
+        <Municipio2ModalContent />
+      </Modal>
     </div>
   );
 }
