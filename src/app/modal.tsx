@@ -4,9 +4,10 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  justify?: "start" | "center" | "end";
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, justify = "start" }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,10 +37,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[10] flex justify-start lg:ml-[15%] ml-0">
+    <div className={`fixed inset-0 z-[10] flex justify-${justify} lg:ml-[15%] lg:mr-[15%] ml-0`}>
       <div
         ref={modalRef}
-        className="bg-white rounded shadow-lg p-6 relative w-[500px] max-h-screen overflow-y-auto min-h-0 my-4 lg:my-16"
+        className="bg-white rounded shadow-lg p-6 relative w-[600px] max-h-screen overflow-y-auto min-h-0 my-4 lg:my-16"
       >
         <button
           className="absolute top-2 right-2 text-gray-500 hover:text-black"

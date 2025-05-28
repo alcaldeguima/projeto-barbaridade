@@ -14,7 +14,7 @@ const Municipio2ModalContent = () => {
 
   return (
     <div>
-      <h2 className="text-lg font-bold mb-2 underline decoration-[var(--yellow)]">
+      <h2 className="text-2xl font-bold mb-2 underline decoration-[var(--red)]">
         Município 2
       </h2>
       <img

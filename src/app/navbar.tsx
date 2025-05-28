@@ -1,8 +1,15 @@
 "use client"; // Isso é obrigatório pra conseguir usar o react
 
+
 import { useState } from "react";
 
-function Navbar() {
+interface NavbarProps {
+  onAboutClick: () => void;
+  onHomeClick?: () => void;
+  activePage: "map" | "about";
+}
+
+function Navbar({ onAboutClick, onHomeClick, activePage }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -49,8 +56,16 @@ function Navbar() {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-white bg-[--dark-green] rounded md:bg-transparent md:text-[--dark-green] md:p-0 dark:text-white md:dark:text-[--light-green]"
-                aria-current="page"
+                onClick={e => {
+                  e.preventDefault();
+                  onHomeClick && onHomeClick();
+                }}
+                className={
+            "block py-2 px-3 rounded md:p-0 " +
+            (activePage === "map"
+              ? "text-white bg-[--dark-green] md:bg-transparent md:text-[--dark-green] dark:text-white md:dark:text-[--light-green]"
+              : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[--dark-green] dark:text-white md:dark:hover:text-[--light-green] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent")
+          }
               >
                 Mapa
               </a>
@@ -58,7 +73,16 @@ function Navbar() {
             <li>
               <a
                 href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[--dark-green] md:p-0 dark:text-white md:dark:hover:text-[--light-green] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                onClick={e => {
+                  e.preventDefault();
+                  onAboutClick();
+                }}
+                className={
+            "block py-2 px-3 rounded md:p-0 " +
+            (activePage === "about"
+              ? "text-white bg-[--dark-green] md:bg-transparent md:text-[--dark-green] dark:text-white md:dark:text-[--light-green]"
+              : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[--dark-green] dark:text-white md:dark:hover:text-[--light-green] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent")
+          }
               >
                 Sobre o projeto
               </a>
