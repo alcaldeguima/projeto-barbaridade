@@ -58,7 +58,7 @@ function Navbar({ onAboutClick, onHomeClick, activePage }: NavbarProps) {
                 href="#"
                 onClick={e => {
                   e.preventDefault();
-                  onHomeClick && onHomeClick();
+                  if (onHomeClick) onHomeClick();
                 }}
                 className={
             "block py-2 px-3 rounded md:p-0 " +
@@ -75,7 +75,7 @@ function Navbar({ onAboutClick, onHomeClick, activePage }: NavbarProps) {
                 href="#"
                 onClick={e => {
                   e.preventDefault();
-                  onAboutClick();
+                  if (onAboutClick) onAboutClick();
                 }}
                 className={
             "block py-2 px-3 rounded md:p-0 " +

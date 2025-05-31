@@ -1,25 +1,17 @@
-import React, { useState } from "react";
-
-const images = [
-  "https://images.unsplash.com/photo-1622825853012-7ea64affd29a",
-  "https://images.unsplash.com/photo-1692278079519-58f37fd4b015",
-  "https://images.unsplash.com/photo-1672951403603-6786ef4b23bf",
-];
+import React from "react";
+import Image from "next/image";
 
 const Municipio2ModalContent = () => {
-  const [current, setCurrent] = useState(0);
-
-  const prev = () => setCurrent((current - 1 + images.length) % images.length);
-  const next = () => setCurrent((current + 1) % images.length);
-
   return (
     <div>
       <h2 className="text-2xl font-bold mb-2 underline decoration-[var(--yellow)]">
         Município 1!!
       </h2>
-      <img
+      <Image
         src="https://images.unsplash.com/photo-1622825853012-7ea64affd29a"
         alt="Placeholder"
+        width={600} 
+        height={400}
         className="my-4 rounded shadow-md"
       />
       <p>
@@ -34,7 +26,7 @@ const Municipio2ModalContent = () => {
         nec libero dictum nunc porttitor viverra. Aliquam at fermentum urna.
         Phasellus libero urna, faucibus ac maximus tincidunt, maximus vel nunc.
         Mauris consequat ultricies scelerisque. Proin mollis elit quis mauris
-        blandit fringilla. 
+        blandit fringilla.
       </p>
     </div>
   );

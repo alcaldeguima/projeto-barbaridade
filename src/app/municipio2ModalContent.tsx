@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Image from "next/image";
+
 
 const images = [
   "https://images.unsplash.com/photo-1622825853012-7ea64affd29a",
@@ -17,9 +19,11 @@ const Municipio2ModalContent = () => {
       <h2 className="text-2xl font-bold mb-2 underline decoration-[var(--red)]">
         Município 2
       </h2>
-      <img
+      <Image
         src="https://images.unsplash.com/photo-1622825853012-7ea64affd29a"
         alt="Placeholder"
+        width={600}
+        height={400}
         className="my-4 rounded shadow-md"
       />
       <p>
@@ -42,19 +46,21 @@ const Municipio2ModalContent = () => {
       <div className="relative w-full flex justify-center items-center my-4">
         <button
           onClick={prev}
-          className="absolute left-0 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+          className="absolute left-0 z-10 bg-white/80 dark:bg-gray-900/80 hover:bg-white rounded-full p-2 shadow"
           aria-label="Previous image"
         >
           &#8592;
         </button>
-        <img
+        <Image
           src={images[current]}
           alt={`Slide ${current + 1}`}
+          width={600}
+          height={400}
           className="rounded shadow-md max-h-64 object-contain"
         />
         <button
           onClick={next}
-          className="absolute right-0 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow"
+          className="absolute right-0 z-10 bg-white/80 dark:bg-gray-900/80 hover:bg-white rounded-full p-2 shadow"
           aria-label="Next image"
         >
           &#8594;
