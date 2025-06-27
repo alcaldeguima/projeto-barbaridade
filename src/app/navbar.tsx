@@ -2,15 +2,38 @@
 
 
 import { useState } from "react";
+import React from "react";
 
 interface NavbarProps {
-  onAboutClick: () => void;
+  onAboutClick?: () => void;
   onHomeClick?: () => void;
-  activePage: "map" | "about";
+  onEquipeClick?: () => void;
+  onSobreNosClick?: () => void;
+  activePage?: "map" | "about";
 }
 
-function Navbar({ onAboutClick, onHomeClick, activePage }: NavbarProps) {
+function Navbar({ onAboutClick, onHomeClick, onEquipeClick, onSobreNosClick, activePage }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Fecha o dropdown ao clicar fora
+  React.useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      const dropdown = document.getElementById("sobre-dropdown");
+      const btn = document.getElementById("sobre-btn");
+      if (
+        isDropdownOpen &&
+        dropdown &&
+        btn &&
+        !dropdown.contains(event.target as Node) &&
+        !btn.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isDropdownOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -61,31 +84,54 @@ function Navbar({ onAboutClick, onHomeClick, activePage }: NavbarProps) {
                   if (onHomeClick) onHomeClick();
                 }}
                 className={
-            "block py-2 px-3 rounded md:p-0 " +
-            (activePage === "map"
-              ? "text-white bg-[--dark-green] md:bg-transparent md:text-[--dark-green] dark:text-white md:dark:text-[--light-green]"
-              : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[--dark-green] dark:text-white md:dark:hover:text-[--light-green] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent")
-          }
+                  "block py-2 px-3 rounded md:p-0 " +
+                  (activePage === "map"
+                    ? "text-white bg-[--dark-green] md:bg-transparent md:text-[--dark-green] dark:text-white md:dark:text-[--light-green]"
+                    : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[--dark-green] dark:text-white md:dark:hover:text-[--light-green] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent")
+                }
               >
                 Mapa
               </a>
             </li>
-            <li>
-              <a
-                href="#"
+            <li className="relative">
+              <button
+                id="sobre-btn"
+                type="button"
                 onClick={e => {
                   e.preventDefault();
-                  if (onAboutClick) onAboutClick();
+                  setIsDropdownOpen((open) => !open);
                 }}
                 className={
-            "block py-2 px-3 rounded md:p-0 " +
-            (activePage === "about"
-              ? "text-white bg-[--dark-green] md:bg-transparent md:text-[--dark-green] dark:text-white md:dark:text-[--light-green]"
-              : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[--dark-green] dark:text-white md:dark:hover:text-[--light-green] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent")
-          }
+                  "block py-2 px-3 rounded md:p-0 focus:outline-none text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[--dark-green] dark:text-white md:dark:hover:text-[--light-green] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                }
               >
                 Sobre o projeto
-              </a>
+              </button>
+              {isDropdownOpen && (
+                <div
+                  id="sobre-dropdown"
+                  className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-20"
+                >
+                  <button
+                    className="w-full text-left py-2 px-4 text-gray-900 dark:text-white text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      setIsDropdownOpen(false);
+                      if (onEquipeClick) onEquipeClick();
+                    }}
+                  >
+                    Equipe
+                  </button>
+                  <button
+                    className="w-full text-left py-2 px-4 text-gray-900 dark:text-white text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      setIsDropdownOpen(false);
+                      if (onSobreNosClick) onSobreNosClick();
+                    }}
+                  >
+                    Sobre nós
+                  </button>
+                </div>
+              )}
             </li>
           </ul>
         </div>
