@@ -1,18 +1,16 @@
 "use client"; // Isso é obrigatório pra conseguir usar o react
 
-
 import { useState } from "react";
 import React from "react";
 
 interface NavbarProps {
-  onAboutClick?: () => void;
   onHomeClick?: () => void;
   onEquipeClick?: () => void;
   onSobreNosClick?: () => void;
   activePage?: "map" | "about";
 }
 
-function Navbar({ onAboutClick, onHomeClick, onEquipeClick, onSobreNosClick, activePage }: NavbarProps) {
+function Navbar({ onHomeClick, onEquipeClick, onSobreNosClick, activePage }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
