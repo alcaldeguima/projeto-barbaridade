@@ -1,0 +1,26 @@
+/* src/app/PaginaTexto.module.css */
+.container {
+  padding: 4rem 2rem;
+  background-color: #fff;
+}
+
+.content {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.content p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 1.5rem;
+} 

@@ -42,3 +42,23 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Adicionar ao final de src/app/globals.css */
+
+/* Isso garante que a estrutura base da página ocupe toda a altura da tela */
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Isso faz com que a tag <main> (onde o conteúdo da página fica)
+   seja flexível, ocupe todo o espaço restante e, se necessário, tenha sua própria barra de rolagem,
+   sem empurrar o cabeçalho ou o rodapé. */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Adiciona rolagem apenas na área principal */
+}

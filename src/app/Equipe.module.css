@@ -1,0 +1,61 @@
+/* src/app/Equipe.module.css */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.container h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  /* Duas colunas em telas maiores, uma em telas menores */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1.5rem;
+}
+
+/* Ajuste para uma coluna em telas menores */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #f9f9f9;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.membroInfo {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nome {
+  font-weight: 600; /* Deixa o nome mais forte */
+  color: #111;
+  margin-right: 0.5rem; /* Espaço entre o nome e a área */
+}
+
+.area {
+  color: #555;
+  font-size: 0.95rem;
+} 
