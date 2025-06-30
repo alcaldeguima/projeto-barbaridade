@@ -7,7 +7,7 @@ const MapaSVG = ({ onMunicipioClick }) => {
   };
 
   return (
-    <svg /* TODO: inserir atributos do SVG original aqui */>
+    <svg onClick={handleClick} /* TODO: inserir atributos do SVG original aqui */>
       {/* TODO: inserir os <path> do SVG aqui, incluindo o de Porto Alegre com id="porto-alegre" e onClick={handleClick} */}
     </svg>
   );
