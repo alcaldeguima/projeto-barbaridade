@@ -1,24 +1,12 @@
-// src/app/sobre/page.tsx
+// src/app/page.tsx
+"use client";
 
-import styles from '../PaginaTexto.module.css'; 
+import React from 'react';
+import MapaRS from './map';
 
-export default function SobrePage() {
+export default function Home() {
+  // A página agora só tem uma responsabilidade: renderizar o mapa.
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <h1>Sobre o Projeto</h1>
-        {/*
-          Correção: O texto de cada parágrafo foi envolvido por {`...`} 
-          Isso transforma o texto em uma "template literal" do JavaScript,
-          o que resolve o problema com as aspas para o linter.
-        */}
-        <p>
-          {`O Portal Educativo 'Barbaridade: A ditadura no Rio Grande do Sul' é uma plataforma interativa que conta com verbetes sobre histórias e memórias da ditadura em diferentes espaços do Rio Grande do Sul, escritos por professores/as e pesquisadores/as da área de Ciências Humanas. Trata-se de um espaço destinado à divulgação do conhecimento histórico produzido acerca do Golpe de 1964 e da ditadura na internet, direcionado especialmente para professores/as e estudantes da Educação Básica.`}
-        </p>
-        <p>
-          {`Além de verbetes específicos criados para a sessão 'Aconteceu aqui', que trata da história da ditadura em diferentes municípios do estado, a plataforma também disponibiliza verbetes sobre temas variados ligados ao período, linha do tempo, sugestões de materiais didáticos e outras plataformas virtuais, imagens e documentos de época.`}
-        </p>
-      </div>
-    </div>
+    <MapaRS />
   );
 }
