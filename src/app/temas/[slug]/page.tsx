@@ -1,37 +1,10 @@
-import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import styles from '../../../styles/Artigo.module.css'; // Ajustando o caminho do CSS
 
-interface Frontmatter {
-  titulo: string;
-  data: string;
-  autor: string;
-  resumo: string;
-  imagemCapa: string;
-  slug: string;
-}
-
-interface Props {
-  params: {
-    slug: string;
-  };
-}
-
-async function getTemaBySlug(slug: string) {
-  const filePath = path.join(process.cwd(), 'content', 'temas', `${slug}.mdx`);
-  const markdownWithMeta = fs.readFileSync(filePath, 'utf-8');
-
-  const { data: frontmatter, content } = matter(markdownWithMeta);
-  const mdxSource = await serialize(content);
-
-  return {
-    frontmatter: frontmatter as Frontmatter,
-    mdxSource,
-  };
-}
-
+// Esta função lê todos os artigos e diz ao Next.js quais páginas construir
 export async function generateStaticParams() {
   const temasDirectory = path.join(process.cwd(), 'content', 'temas');
   const filenames = fs.readdirSync(temasDirectory);
@@ -41,29 +14,38 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function TemasPost({ params }: Props) {
-  const { frontmatter, mdxSource } = await getTemaBySlug(params.slug);
+// Esta função busca o conteúdo de UM artigo específico
+function getPostBySlug(slug: string) {
+  const filePath = path.join(process.cwd(), 'content', 'temas', `${slug}.mdx`);
+  const markdownWithMeta = fs.readFileSync(filePath, 'utf-8');
+  const { data: frontmatter, content } = matter(markdownWithMeta);
+  return { frontmatter, content };
+}
+
+// Este é o componente da página, agora usando o padrão correto
+export default function PostPage({ params }: { params: { slug: string } }) {
+  const { frontmatter, content } = getPostBySlug(params.slug);
 
   return (
-    <article className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <header className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {frontmatter.titulo}
-          </h1>
-          <p className="text-lg text-gray-600">
-            Por {frontmatter.autor} | {new Date(frontmatter.data).toLocaleDateString('pt-BR', { 
-              day: '2-digit', 
-              month: 'long', 
-              year: 'numeric' 
-            })}
-          </p>
-        </header>
-        
-        <div className="prose prose-lg max-w-none">
-          <MDXRemote source={mdxSource} />
-        </div>
+    <article className={styles.container}>
+      <header className={styles.header}>
+        <h1>{frontmatter.titulo}</h1>
+        <p>
+          Por {frontmatter.autor} | {new Date(frontmatter.data).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
+        </p>
+      </header>
+      <div className={styles.content}>
+        <MDXRemote source={content} />
       </div>
     </article>
   );
+}
+
+// Opcional: Adicionar metadados dinâmicos para cada página
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const { frontmatter } = getPostBySlug(params.slug);
+  return {
+    title: `${frontmatter.titulo} | Projeto Barbaridade`,
+    description: frontmatter.resumo,
+  };
 } 
