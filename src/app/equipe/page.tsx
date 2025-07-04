@@ -1,5 +1,5 @@
 // src/app/sobre/page.tsx
-import styles from '../PaginaTexto.module.css'; 
+import styles from '@/app/PaginaTexto.module.css'; 
 
 export default function SobrePage() {
   return (

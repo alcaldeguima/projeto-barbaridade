@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import styles from '../../../styles/Artigo.module.css'; // Corrigido o caminho do CSS
+import styles from '@/styles/Artigo.module.css'; // Corrigido o caminho do CSS
 
 // Esta função lê todos os artigos e diz ao Next.js quais páginas construir
 export async function generateStaticParams() {

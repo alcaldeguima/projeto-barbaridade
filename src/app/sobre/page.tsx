@@ -1,7 +1,7 @@
 // src/app/sobre/page.tsx
 
 // Importaremos um estilo genérico para páginas de texto.
-import styles from '../PaginaTexto.module.css'; 
+import styles from '@/app/PaginaTexto.module.css'; 
 
 export default function SobrePage() {
   return (

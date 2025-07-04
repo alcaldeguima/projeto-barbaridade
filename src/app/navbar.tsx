@@ -1,7 +1,7 @@
 "use client"; // Mantemos pois o Link do Next.js precisa dele no App Router
 
 import Link from 'next/link';
-import styles from './navbar.module.css';
+import styles from '@/app/navbar.module.css';
 
 export default function Navbar() {
   return (
