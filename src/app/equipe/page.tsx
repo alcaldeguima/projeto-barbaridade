@@ -1,23 +1,42 @@
-// src/app/sobre/page.tsx
-import styles from '@/app/PaginaTexto.module.css'; 
+// src/app/equipe/page.tsx
+import styles from '@/styles/Equipe.module.css'; 
 
-export default function SobrePage() {
+export default function EquipePage() {
   return (
     <div className={styles.container}>
-      <div className={styles.content}>
-        <h1>Sobre o Projeto</h1>
-
-        {/* A linha abaixo desativa a regra de 'aspas' APENAS para o parágrafo seguinte */}
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        <p>
-          O Portal Educativo 'Barbaridade: A ditadura no Rio Grande do Sul' é uma plataforma interativa que conta com verbetes sobre histórias e memórias da ditadura em diferentes espaços do Rio Grande do Sul, escritos por professores/as e pesquisadores/as da área de Ciências Humanas. Trata-se de um espaço destinado à divulgação do conhecimento histórico produzido acerca do Golpe de 1964 e da ditadura na internet, direcionado especialmente para professores/as e estudantes da Educação Básica.
-        </p>
-
-        {/* E aqui desativamos de novo, para o segundo parágrafo */}
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        <p>
-          Além de verbetes específicos criados para a sessão 'Aconteceu aqui', que trata da história da ditadura em diferentes municípios do estado, a plataforma também disponibiliza verbetes sobre temas variados ligados ao período, linha do tempo, sugestões de materiais didáticos e outras plataformas virtuais, imagens e documentos de época.
-        </p>
+      <h1>Nossa Equipe</h1>
+      <p className={styles.subtitulo}>
+        Conheça os pesquisadores e professores que contribuíram para este projeto
+      </p>
+      
+      <div className={styles.grid}>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Dr. João Silva</span>
+            <span className={styles.area}>História - UFPel</span>
+          </p>
+        </div>
+        
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Dra. Maria Santos</span>
+            <span className={styles.area}>Ciências Sociais - UFRGS</span>
+          </p>
+        </div>
+        
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Prof. Carlos Oliveira</span>
+            <span className={styles.area}>História - UFSM</span>
+          </p>
+        </div>
+        
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Dra. Ana Costa</span>
+            <span className={styles.area}>Educação - UFPel</span>
+          </p>
+        </div>
       </div>
     </div>
   );

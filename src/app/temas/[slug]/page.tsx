@@ -2,9 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import styles from '@/styles/Artigo.module.css'; // Corrigido o caminho do CSS
+import styles from '@/styles/Artigo.module.css'; // Usando o atalho de caminho "@" que é mais robusto
 
-// Esta função lê todos os artigos e diz ao Next.js quais páginas construir
+// 1. Esta função gera a lista de todas as páginas de temas que devem ser criadas
 export async function generateStaticParams() {
   const temasDirectory = path.join(process.cwd(), 'content', 'temas');
   const filenames = fs.readdirSync(temasDirectory);
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// Esta função busca o conteúdo de UM artigo específico
+// 2. Esta é uma função auxiliar para buscar o conteúdo de um post específico pelo slug
 function getPostBySlug(slug: string) {
   const filePath = path.join(process.cwd(), 'content', 'temas', `${slug}.mdx`);
   const markdownWithMeta = fs.readFileSync(filePath, 'utf-8');
@@ -22,7 +22,7 @@ function getPostBySlug(slug: string) {
   return { frontmatter, content };
 }
 
-// Este é o componente da página, agora usando o padrão correto
+// 3. Este é o componente da página. Ele recebe o "slug" pelos parâmetros e busca seus próprios dados.
 export default function PostPage({ params }: { params: { slug: string } }) {
   const { frontmatter, content } = getPostBySlug(params.slug);
 
@@ -41,7 +41,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
   );
 }
 
-// Opcional: Adicionar metadados dinâmicos para cada página
+// 4. (Bônus) Esta função gera os metadados (ex: título da aba do navegador) para cada página
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const { frontmatter } = getPostBySlug(params.slug);
   return {

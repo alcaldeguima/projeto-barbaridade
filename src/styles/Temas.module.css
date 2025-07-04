@@ -1,5 +1,10 @@
 /* styles/Temas.module.css */
-.pageContainer {
+.container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.content {
   max-width: 1120px;
   margin: 0 auto;
   padding: 2rem;
@@ -10,16 +15,18 @@
   margin-bottom: 3rem;
 }
 
-.header h1 {
+.title {
   font-size: 3rem;
-  color: #333;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 1rem;
 }
 
-.header p {
-  font-size: 1.2rem;
-  color: #666;
+.subtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
   max-width: 600px;
-  margin: 0.5rem auto 0;
+  margin: 0 auto;
 }
 
 .grid {
@@ -58,18 +65,25 @@
   color: #111;
 }
 
-.resumo {
-  flex-grow: 1;
-  color: #555;
-  line-height: 1.6;
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
 }
 
-.meta {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #888;
+.cardResumo {
+  flex-grow: 1;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.cardMeta {
+  font-size: 0.875rem;
+  color: #9ca3af;
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #eaeaea;
-  padding-top: 0.75rem;
+  align-items: center;
 } 
