@@ -1,7 +1,7 @@
-"use client"; // Mantemos pois o Link do Next.js precisa dele no App Router
+"use client";
 
 import Link from 'next/link';
-import styles from '@/app/navbar.module.css';
+import styles from './navbar.module.css';
 
 export default function Navbar() {
   return (
@@ -19,7 +19,6 @@ export default function Navbar() {
             Temas
           </Link>
 
-          {/* ----- A estrutura do Dropdown permanece, mas sem os eventos de mouse ----- */}
           <div className={styles.dropdown}>
             <button className={styles.link}>
               Sobre o Projeto ▼
