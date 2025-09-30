@@ -48,4 +48,4 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: `${frontmatter.titulo} | Projeto Barbaridade`,
     description: frontmatter.resumo,
   };
-} 
+}
