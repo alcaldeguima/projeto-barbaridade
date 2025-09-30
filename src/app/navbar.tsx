@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navContainer}>
       <div className={styles.navContent}>
-        <Link href="/" className={styles.logo}>        git push origin main
+        <Link href="/" className={styles.logo}>
           Barbaridade!
         </Link>
         
@@ -15,9 +15,9 @@ export default function Navbar() {
           <Link href="/" className={styles.link}>
             Mapa Interativo
           </Link>
-          <Link href="/temas" className={styles.link}>
+          {/* <Link href="/temas" className={styles.link}>
             Temas
-          </Link>
+          </Link> */}
 
           <div className={styles.dropdown}>
             <button className={styles.link}>
