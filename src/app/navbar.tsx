@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navContainer}>
       <div className={styles.navContent}>
-        <Link href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo}>        git push origin main
           Barbaridade!
         </Link>
         
