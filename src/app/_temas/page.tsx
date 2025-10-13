@@ -2,7 +2,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import styles from '@/styles/Temas.module.css';
+import styles from '@/styles/navbar.module.css';
 
 interface Tema {
   titulo: string;
@@ -75,4 +75,4 @@ export default async function TemasPage() {
       </div>
     </div>
   );
-} 
+}

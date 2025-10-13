@@ -13,8 +13,7 @@ function MapaRS() {
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalOpen2, setModalOpen2] = useState(false);
-
+  const [outroModalOpen, setOutroModalOpen] = useState(false);
 
   const handleMouseEnter = () => setTooltipVisible(true);
   const handleMouseLeave = () => setTooltipVisible(false);
@@ -84,7 +83,7 @@ function MapaRS() {
             onMouseMove={handleMouseMove}
             className={`stroke-[--red]
                         stroke-1
-                        ${modalOpen2 ? "fill-[--red]" : "fill-transparent"}
+                        ${outroModalOpen ? "fill-[--red]" : "fill-transparent"}
                         animate-pulse
                         cursor-pointer
                         hover:fill-[--red]
@@ -93,7 +92,7 @@ function MapaRS() {
                         duration-300 
                         ease-in-out`}
             id="municipios-2"
-            onClick={() => setModalOpen2(true)}
+            onClick={() => setOutroModalOpen(true)}
             d={pathMap.MUNICIPIO2}
           />
         </svg>
@@ -131,10 +130,10 @@ function MapaRS() {
           </div>
         )}
       </div>
-      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} justify="end">
+      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
         <Municipio1ModalContent />
       </Modal>
-      <Modal isOpen={modalOpen2} onClose={() => setModalOpen2(false)} justify="start">
+      <Modal isOpen={outroModalOpen} onClose={() => setOutroModalOpen(false)}>
         <Municipio2ModalContent />
       </Modal>
     </div>
