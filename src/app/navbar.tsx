@@ -15,9 +15,17 @@ export default function Navbar() {
           <Link href="/" className={styles.link}>
             Mapa Interativo
           </Link>
+
+         
+          <Link href="/timeline" className={styles.link}>
+            Linha do Tempo
+          </Link>
+
           {/* <Link href="/temas" className={styles.link}>
             Temas
           </Link> */}
+
+          
 
           <div className={styles.dropdown}>
             <button className={styles.link}>
