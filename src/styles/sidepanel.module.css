@@ -1,0 +1,300 @@
+/* sidepanel.module.css */
+
+/* O overlay é um fundo semi-transparente que cobre a tela inteira.
+   Ajuda a focar no painel e permite fechar ao clicar fora dele. */
+.overlay {
+  position: absolute; /* Usamos absolute pois o pai tem relative */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000; /* Garante que fique acima do mapa (que tem z-index padrão) */
+  display: flex;
+  justify-content: flex-end; /* Alinha o filho (painel) à direita */
+}
+
+/* O painel principal */
+.panel {
+  width: 50%; /* Ocupa metade da tela */
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Para posicionar o botão de fechar */
+
+  /* Animação de entrada */
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Garante que o conteúdo possa rolar se for muito grande */
+.content {
+  padding: 25px;
+  overflow-y: auto; /* ESSENCIAL para textos grandes */
+  flex-grow: 1; /* Faz o conteúdo ocupar o espaço disponível */
+}
+
+.content p {
+  color: #333; /* Cor de texto escura, ótima para leitura */
+  line-height: 1.6; /* Aumenta o espaçamento entre as linhas */
+  margin-bottom: 1em; /* Adiciona um espaço abaixo de cada parágrafo */
+}
+
+.content a {
+  color: #007bff; /* Um azul padrão e legível para links */
+  text-decoration: none; /* Remove o sublinhado padrão (opcional) */
+  font-weight: 500; /* Deixa a fonte um pouco mais forte */
+}
+
+/* Efeito ao passar o mouse por cima do link (boa prática) */
+.content a:hover {
+  color: #0056b3; /* Um azul mais escuro ao passar o mouse */
+  text-decoration: underline; /* Adiciona o sublinhado ao passar o mouse */
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: #888;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 10; /* Fica acima do conteúdo */
+}
+
+.closeButton:hover {
+  color: #000;
+}
+
+/* --- Estilos reaproveitados do seu popup.css --- */
+.title {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.location {
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 1em;
+}
+
+.panelImage {
+  width: 100%;
+  height: 250px; /* Mais altura para a imagem */
+  object-fit: cover;
+  border-radius: 8px; 
+  margin-bottom: 20px;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  background-color: #a08c37;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.description {
+  margin: 0 0 25px 0;
+  color: #000000;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.fichaButton {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.fichaButton:hover {
+  background-color: #333333;
+}
+
+/* Adicione estas classes ao final do seu sidepanel.module.css */
+
+.section {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.sectionTitle {
+  font-size: 1.2em;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.videoContainer {
+  position: relative;
+  padding-bottom: 56.25%; /* Proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  margin-bottom: 10px;
+}
+
+.videoContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.referencesList {
+  padding-left: 20px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.referencesList li {
+  margin-bottom: 10px;
+}
+
+/* Estilos para Lugares de Memória */
+.memoryPlacesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.memoryPlace {
+  padding-left: 15px;
+  border-left: 3px solid #a08c37; /* Cor da tag */
+}
+
+.memoryPlaceName {
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+}
+
+.memoryPlace p {
+  margin: 0;
+}
+
+/* Estilos para Galeria de Imagens */
+.imageGallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.imageContainer {
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  max-width: 450px;   /* << Define um tamanho máximo, ajuste se desejar */
+  width: 100%;        /* Garante que a imagem seja responsiva e não ultrapasse o container */
+  display: block;     /* Remove espaços extras abaixo da imagem */
+  margin: 0 auto;
+}
+
+.imageContainer figcaption {
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+}
+
+/* Ajuste para a seção de vídeo, caso exista junto com a galeria */
+.videoSection {
+  margin-top: 20px;
+}
+.consultationList {
+  list-style-position: inside; /* Opcional: melhora alinhamento dos bullets */
+  padding-left: 5px;
+}
+
+.consultationList li {
+  margin-bottom: 12px; /* Aumenta o espaço vertical entre cada item */
+}
+
+/* Estilo para o texto que não é um link */
+.consultationList span {
+  color: #333; /* Garante que o texto seja escuro */
+}
+
+/* Adicione estas classes ao final do seu sidepanel.module.css */
+
+.referencesList {
+  font-size: 0.9em; /* Texto ligeiramente menor */
+  color: #555; /* Cor cinza escura */
+  padding-left: 20px; /* Espaço para os números da lista */
+  list-style-position: outside; /* Números ficam fora do bloco de texto */
+}
+
+.referencesList li {
+  margin-bottom: 12px; /* Espaçamento entre cada referência */
+  padding-left: 10px; /* Cria o espaço para o recuo */
+  text-indent: -10px; /* Puxa a primeira linha de volta, criando o efeito de recuo deslocado */
+}
+
+/* Estilos para a seção de Textos em Materiais Adicionais */
+
+.textMaterialContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaço entre múltiplos textos */
+  margin-bottom: 25px; /* Espaço antes da galeria de imagens, se houver */
+}
+
+.textMaterial {
+  background-color: #f9f9f9; /* Fundo sutil para destacar */
+  border-left: 3px solid #a08c37; /* Mesma cor da borda de Lugares de Memória */
+  padding: 15px;
+  border-radius: 0 5px 5px 0;
+}
+
+.textMaterial p {
+  margin: 0;
+  font-style: italic; /* Deixa o texto com cara de citação/descrição */
+  color: #444;
+}
+
+/* Pequeno ajuste para a galeria de imagens não ficar colada nos textos */
+.imageGallery {
+  margin-top: 25px;
+}
