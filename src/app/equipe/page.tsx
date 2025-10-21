@@ -26,6 +26,12 @@ export default function EquipePage() {
         </div>
         <div className={styles.card}>
           <p className={styles.membroInfo}>
+            <span className={styles.nome}>Carlos Artur Gallo</span>
+            <span className={styles.area}>Ciência Política - UFPel</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
             <span className={styles.nome}>Caroline Silveira Bauer</span>
             <span className={styles.area}>História - UFRGS</span>
           </p>
@@ -34,12 +40,6 @@ export default function EquipePage() {
           <p className={styles.membroInfo}>
             <span className={styles.nome}>Cláudia Turra Magni</span>
             <span className={styles.area}>Antropologia - UFPel</span>
-          </p>
-        </div>
-        <div className={styles.card}>
-          <p className={styles.membroInfo}>
-            <span className={styles.nome}>Carlos Artur Gallo</span>
-            <span className={styles.area}>Ciência Política - UFPel</span>
           </p>
         </div>
         <div className={styles.card}>
@@ -56,6 +56,12 @@ export default function EquipePage() {
         </div>
         <div className={styles.card}>
           <p className={styles.membroInfo}>
+            <span className={styles.nome}>Guilherme Ribeiro Corrêa</span>
+            <span className={styles.area}>Centro de Desenvolvimento Tecnológico - UFPel</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
             <span className={styles.nome}>Larissa Patron Cahves Spieker</span>
             <span className={styles.area}>História - UFPel</span>
           </p>
@@ -64,12 +70,6 @@ export default function EquipePage() {
           <p className={styles.membroInfo}>
             <span className={styles.nome}>Tatiana Lebedeff</span>
             <span className={styles.area}>Educação - UFPel</span>
-          </p>
-        </div>
-        <div className={styles.card}>
-          <p className={styles.membroInfo}>
-            <span className={styles.nome}>Guilherme Ribeiro Corrêa</span>
-            <span className={styles.area}>Centro de Desenvolvimento Tecnológico - UFPel</span>
           </p>
         </div>
       </div>
