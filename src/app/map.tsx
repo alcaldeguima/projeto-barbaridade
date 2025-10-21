@@ -27,7 +27,7 @@ L.Icon.Default.mergeOptions({
 });
 
 // Garante que os dados importados sigam a interface centralizada
-const pontos: PontoData[] = pontosDeInteresse as unknown as PontoData[];
+const pontos: PontoData[] = pontosDeInteresse;
 
 const bounds: L.LatLngBoundsExpression = [
   [-33.7511, -57.6462],

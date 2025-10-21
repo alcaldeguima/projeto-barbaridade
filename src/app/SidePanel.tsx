@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from '@/styles/sidepanel.module.css';
 import Image from 'next/image';
-import type { PontoData } from '@/types/ponto'; // Definição central importada
+// Importa as interfaces centralizadas
+import type { PontoData, ContentData, MaterialAdicionalItem, LugaresDeMemoria, EspacosDeConsulta } from '@/types/ponto';
 
 interface SidePanelProps {
   ponto: PontoData | null;
@@ -12,6 +13,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
   if (!ponto) return null;
   const { name, cityState, tags, content } = ponto;
 
+  // Verificações de segurança (mantidas como antes)
   const hasMateriaisAdicionais =
     (content?.materiaisAdicionais?.imagens?.length ?? 0) > 0 ||
     Boolean(content?.materiaisAdicionais?.video) ||
@@ -28,7 +30,8 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
       <h2>{name}</h2>
       <p className={styles.cityState}>{cityState}</p>
       <div className={styles.tags}>
-        {tags?.map((tag, index) => (
+        {/* Adiciona tipo 'string' ao parâmetro 'tag' */}
+        {tags?.map((tag: string, index: number) => (
           <span key={index} className={styles.tag}>{tag}</span>
         ))}
       </div>
@@ -36,7 +39,8 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
         <div className={styles.section}>
           <h4 className={styles.sectionTitle}>Dados Básicos</h4>
           {Array.isArray(content.dadosBasicos) ? (
-            content.dadosBasicos.map((item, index) => <p key={index}>{item}</p>)
+            // Adiciona tipo 'string' ao parâmetro 'item'
+            content.dadosBasicos.map((item: string, index: number) => <p key={index}>{item}</p>)
           ) : (
             <p>{content.dadosBasicos}</p>
           )}
@@ -45,30 +49,33 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
       {content?.verbete && content.verbete.length > 0 && (
         <div className={styles.section}>
           <h4 className={styles.sectionTitle}>Verbete</h4>
-          {content.verbete.map((paragrafo, index) => <p key={index}>{paragrafo}</p>)}
+          {/* Adiciona tipo 'string' ao parâmetro 'paragrafo' */}
+          {content.verbete.map((paragrafo: string, index: number) => <p key={index}>{paragrafo}</p>)}
         </div>
       )}
       {hasLugaresDeMemoria && (
-         <div className={styles.section}>
-           <h4 className={styles.sectionTitle}>Lugares de Memória</h4>
-           <ul className={styles.list}>
-             {content?.lugaresDeMemoria?.map((lugar, index) => (
-               <li key={index}><strong>{lugar.nome}</strong>: {lugar.descricao}</li>
-             ))}
-           </ul>
-         </div>
+          <div className={styles.section}>
+            <h4 className={styles.sectionTitle}>Lugares de Memória</h4>
+            <ul className={styles.list}>
+              {/* Adiciona tipo 'LugaresDeMemoria' ao parâmetro 'lugar' */}
+              {content?.lugaresDeMemoria?.map((lugar: LugaresDeMemoria, index: number) => (
+                <li key={index}><strong>{lugar.nome}</strong>: {lugar.descricao}</li>
+              ))}
+            </ul>
+          </div>
       )}
       {hasEspacosDeConsulta && (
-         <div className={styles.section}>
-           <h4 className={styles.sectionTitle}>Espaços de Consulta</h4>
-           <ul className={styles.list}>
-             {content?.espacosDeConsulta?.map((espaco, index) => (
-               <li key={index}>
-                 {espaco.url ? (<a href={espaco.url} target="_blank" rel="noopener noreferrer">{espaco.nome}</a>) : (espaco.nome)}
-               </li>
-             ))}
-           </ul>
-         </div>
+          <div className={styles.section}>
+            <h4 className={styles.sectionTitle}>Espaços de Consulta</h4>
+            <ul className={styles.list}>
+              {/* Adiciona tipo 'EspacosDeConsulta' ao parâmetro 'espaco' */}
+              {content?.espacosDeConsulta?.map((espaco: EspacosDeConsulta, index: number) => (
+                <li key={index}>
+                  {espaco.url ? (<a href={espaco.url} target="_blank" rel="noopener noreferrer">{espaco.nome}</a>) : (espaco.nome)}
+                </li>
+              ))}
+            </ul>
+          </div>
       )}
       {hasMateriaisAdicionais && (
         <div className={styles.section}>
@@ -80,7 +87,8 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
             </div>
           )}
           <div className={styles.images}>
-            {content?.materiaisAdicionais?.imagens?.map((item, index) => (
+            {/* Adiciona tipo 'MaterialAdicionalItem' ao parâmetro 'item' */}
+            {content?.materiaisAdicionais?.imagens?.map((item: MaterialAdicionalItem, index: number) => (
               <div key={index} className={styles.imageItem}>
                 <Image src={item.url || ''} alt={item.caption || `${name} - Imagem ${index + 1}`} width={500} height={300} style={{ width: '100%', height: 'auto', objectFit: 'cover', borderRadius: '4px', marginTop: '1rem' }} />
                 {item.caption && <p className={styles.caption}>{item.caption}</p>}
@@ -88,7 +96,8 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
             ))}
           </div>
           <ul className={styles.textList}>
-            {content?.materiaisAdicionais?.textos?.map((item, index) => (
+            {/* Adiciona tipo 'MaterialAdicionalItem' ao parâmetro 'item' */}
+            {content?.materiaisAdicionais?.textos?.map((item: MaterialAdicionalItem, index: number) => (
               <li key={index}>
                 {item.url ? (<a href={item.url} target="_blank" rel="noopener noreferrer">{item.nome || item.descricao || item.url}</a>) : (item.descricao)}
               </li>
@@ -100,7 +109,8 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
         <div className={styles.section}>
           <h4 className={styles.sectionTitle}>Referências</h4>
           <ul className={styles.list}>
-            {content?.referencias?.map((ref, index) => (<li key={index}>{ref}</li>))}
+            {/* Adiciona tipo 'string' ao parâmetro 'ref' */}
+            {content?.referencias?.map((ref: string, index: number) => (<li key={index}>{ref}</li>))}
           </ul>
         </div>
       )}

@@ -35,10 +35,10 @@ export interface ContentData {
 
 // Define a interface principal 'PontoData'
 export interface PontoData {
-  id: number; // <-- CORRIGIDO para number
+  id: number;
   name: string;
   cityState: string;
   tags: string[];
-  position: [number, number];
-  content?: ContentData;
+  position: number[];
+  content?: any;
 }
