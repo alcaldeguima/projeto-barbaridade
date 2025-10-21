@@ -32,7 +32,7 @@ export default function LinhaDoTempoPage() {
         data-id="6961324368"
         id="chtl-script"
         strategy="afterInteractive"
-      />
+      />
     </div>
 
     
