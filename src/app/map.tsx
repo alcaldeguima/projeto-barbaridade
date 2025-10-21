@@ -14,6 +14,7 @@ import styles from '../styles/map.module.css';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import type { LatLngExpression, LatLngBoundsExpression } from 'leaflet';
 
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: markerIcon2x.src,
@@ -21,16 +22,40 @@ L.Icon.Default.mergeOptions({
     shadowUrl: markerShadow.src,
 });
 
-const bounds = [
+// Adicione esta interface
+interface PontoData {
+  id: string;
+  name: string;
+  cityState: string;
+  tags: string[];
+  content?: {
+    text?: string;
+    images?: string[];
+    materiaisAdicionais?: {
+      video?: string;
+      imagens?: string[];
+      textos?: string[];
+    };
+  };
+  position: [number, number];
+}
+
+// Normalize/force type of imported JSON to PontoData[] to avoid implicit any
+const pontos: PontoData[] = (pontosDeInteresse as unknown as any[]).map(p => ({
+  ...p,
+  id: String(p.id),
+})) as PontoData[];
+
+const bounds: LatLngBoundsExpression = [
   [-33.7511, -57.6462],
-  [-27.1302, -49.6919]
+  [-27.1302, -49.6919],
 ];
 
 const MapaRS = () => {
-  const initialPosition = [-30.0346, -51.2177];
+  const initialPosition: LatLngExpression = [-30.0346, -51.2177];
 
-  // Estado para o painel lateral
-  const [selectedPonto, setSelectedPonto] = useState(null);
+  // Estado para o painel lateral (tipado)
+  const [selectedPonto, setSelectedPonto] = useState<PontoData | null>(null);
 
   // Estados e lógicas de filtro
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -38,8 +63,8 @@ const MapaRS = () => {
 
   const allTags = useMemo(() => {
     const tagsSet = new Set<string>();
-    pontosDeInteresse.forEach(ponto => {
-      ponto.tags.forEach(tag => tagsSet.add(tag));
+    pontos.forEach((ponto) => {
+      (ponto.tags || []).forEach(tag => tagsSet.add(tag));
     });
     return Array.from(tagsSet);
   }, []);
@@ -55,16 +80,16 @@ const MapaRS = () => {
 
   const filteredPontos = useMemo(() => {
     if (selectedTags.length === 0) {
-      return pontosDeInteresse;
+      return pontos;
     }
-    return pontosDeInteresse.filter(ponto =>
-      ponto.tags.some(tag => selectedTags.includes(tag))
+    return pontos.filter(ponto =>
+      (ponto.tags || []).some(tag => selectedTags.includes(tag))
     );
   }, [selectedTags]);
 
-  // Função para lidar com o clique em um marcador
-  const handleMarkerClick = (ponto) => {
-    console.log("click funcionando Dados do ponto:", ponto); // Adicionado para depuração
+  // Função para lidar com o clique em um marcador (tipada)
+  const handleMarkerClick = (ponto: PontoData) => {
+    console.log("Marcador clicado! Dados do ponto:", ponto);
     setSelectedPonto(ponto);
   };
 
@@ -144,7 +169,7 @@ const MapaRS = () => {
       )}
 
 
-      {/* Renderização do painel lateral */}
+      {/* Renderização do painel lateral */} 
       {selectedPonto && (
         <SidePanel 
           ponto={selectedPonto} 
