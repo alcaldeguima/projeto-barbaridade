@@ -2,7 +2,7 @@
 .navContainer {
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
-  padding: 0.5rem 2rem; /* 8px de padding vertical (mais justo) */
+  padding: 0.25rem 2rem; /* 4px de padding vertical (ainda mais justo) */
   position: sticky;
   top: 0;
   z-index: 100;
@@ -23,6 +23,8 @@
   text-decoration: none;
   color: inherit;
 }
+
+/* Removemos o estilo antigo do .logo que era para texto */
 
 .navLinks {
   display: flex;
