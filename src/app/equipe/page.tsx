@@ -73,14 +73,50 @@ export default function EquipePage() {
           </p>
         </div>
       </div>
-
+      <br></br>
       {/* DISCENTES */}
       <h2 className={styles.sectionTitle}>Discentes</h2>
       <div className={styles.grid}>
         <div className={styles.card}>
           <p className={styles.membroInfo}>
+            <span className={styles.nome}>Ana Clara Ribeiro da Silva</span>
+            <span className={styles.area}>História - Licenciatura</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Anne Machado Nunes de Cristo</span>
+            <span className={styles.area}>História - Licenciatura</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Arthur Ferreira dos Santos</span>
+            <span className={styles.area}>Ciência da Computação - Bacharelado</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Camila Rocha da Cruz</span>
+            <span className={styles.area}>Ciências Sociais - Licenciatura</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
             <span className={styles.nome}>Darlise Gonçalves de Gonçalves</span>
             <span className={styles.area}>PPG História - UFPel</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Eloá Ferreira dos Santos</span>
+            <span className={styles.area}>História - Licenciatura</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Gabriel Almeida da Silva</span>
+            <span className={styles.area}>Ciência da Computação - UFPel</span>
           </p>
         </div>
         <div className={styles.card}>
@@ -97,6 +133,18 @@ export default function EquipePage() {
         </div>
         <div className={styles.card}>
           <p className={styles.membroInfo}>
+            <span className={styles.nome}>Lemoel da Silva Costa</span>
+            <span className={styles.area}>Ciência da Computação - UFPel</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Lúcio Gularte Tavares</span>
+            <span className={styles.area}>Ciência da Computação - Bacharelado</span>
+          </p>
+        </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
             <span className={styles.nome}>Maria Eduarda Nebel Carmona</span>
             <span className={styles.area}>Engenharia de Computação - UFPel</span>
           </p>
@@ -109,38 +157,8 @@ export default function EquipePage() {
         </div>
         <div className={styles.card}>
           <p className={styles.membroInfo}>
-            <span className={styles.nome}>Lúcio Gularte Tavares</span>
-            <span className={styles.area}>Ciência da Computação - Bacharelado</span>
-          </p>
-        </div>
-        <div className={styles.card}>
-          <p className={styles.membroInfo}>
-            <span className={styles.nome}>Arthur Ferreira dos Santos</span>
-            <span className={styles.area}>Ciência da Computação - Bacharelado</span>
-          </p>
-        </div>
-        <div className={styles.card}>
-          <p className={styles.membroInfo}>
-            <span className={styles.nome}>Ana Clara Ribeiro da Silva</span>
-            <span className={styles.area}>História - Licenciatura</span>
-          </p>
-        </div>
-        <div className={styles.card}>
-          <p className={styles.membroInfo}>
-            <span className={styles.nome}>Camila Rocha da Cruz</span>
-            <span className={styles.area}>Ciências Sociais - Licenciatura</span>
-          </p>
-        </div>
-        <div className={styles.card}>
-          <p className={styles.membroInfo}>
-            <span className={styles.nome}>Eloá Ferreira dos Santos</span>
-            <span className={styles.area}>História - Licenciatura</span>
-          </p>
-        </div>
-        <div className={styles.card}>
-          <p className={styles.membroInfo}>
-            <span className={styles.nome}>Anne Machado Nunes de Cristo</span>
-            <span className={styles.area}>História - Licenciatura</span>
+            <span className={styles.nome}>Yuri Nunes</span>
+            <span className={styles.area}>Ciência da Computação - UFPel</span>
           </p>
         </div>
       </div>
