@@ -7,57 +7,36 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-import SidePanel from './SidePanel'; 
+import SidePanel from './SidePanel';
 import pontosDeInteresse from '../../content/pontos/pontos.json';
-import styles from '../styles/map.module.css';
+import styles from '@/styles/map.module.css';
+
+// Importa a interface centralizada
+import type { PontoData } from '@/types/ponto';
 
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-import type { LatLngExpression, LatLngBoundsExpression } from 'leaflet';
 
+// @ts-ignore
+delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: markerIcon2x.src,
     iconUrl: markerIcon.src,
     shadowUrl: markerShadow.src,
 });
 
-// Adicione esta interface
-interface PontoData {
-  id: string;
-  name: string;
-  cityState: string;
-  tags: string[];
-  content?: {
-    text?: string;
-    images?: string[];
-    materiaisAdicionais?: {
-      video?: string;
-      imagens?: string[];
-      textos?: string[];
-    };
-  };
-  position: [number, number];
-}
+// Garante que os dados importados sigam a interface centralizada
+const pontos: PontoData[] = pontosDeInteresse as unknown as PontoData[];
 
-// Normalize/force type of imported JSON to PontoData[] to avoid implicit any
-const pontos: PontoData[] = (pontosDeInteresse as unknown as any[]).map(p => ({
-  ...p,
-  id: String(p.id),
-})) as PontoData[];
-
-const bounds: LatLngBoundsExpression = [
+const bounds: L.LatLngBoundsExpression = [
   [-33.7511, -57.6462],
-  [-27.1302, -49.6919],
+  [-27.1302, -49.6919]
 ];
 
-const MapaRS = () => {
-  const initialPosition: LatLngExpression = [-30.0346, -51.2177];
-
-  // Estado para o painel lateral (tipado)
+const MapaRS: React.FC = () => {
+  const initialPosition: L.LatLngExpression = [-30.0346, -51.2177];
   const [selectedPonto, setSelectedPonto] = useState<PontoData | null>(null);
-
-  // Estados e lógicas de filtro
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
@@ -87,56 +66,32 @@ const MapaRS = () => {
     );
   }, [selectedTags]);
 
-  // Função para lidar com o clique em um marcador (tipada)
   const handleMarkerClick = (ponto: PontoData) => {
-    console.log("Marcador clicado! Dados do ponto:", ponto);
     setSelectedPonto(ponto);
   };
 
-  // Função para fechar o painel
   const handleClosePanel = () => {
     setSelectedPonto(null);
   };
-  
-  // Componente para fechar o painel ao clicar no mapa
+
   const MapClickHandler = () => {
     useMapEvents({
-      click: () => {
-        handleClosePanel();
-      },
+      click: () => { handleClosePanel(); },
     });
     return null;
   };
 
   return (
     <div className={styles.mapWrapper} style={{ position: 'relative' }}>
-      <MapContainer 
-        center={initialPosition} 
-        zoom={7} 
-        style={{ height: '100%', width: '100%' }}
-        maxBounds={bounds}
-        minZoom={7}
-        maxBoundsViscosity={1.0}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        
+      <MapContainer center={initialPosition} zoom={7} style={{ height: '100%', width: '100%' }} maxBounds={bounds} minZoom={7} maxBoundsViscosity={1.0}>
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
         <MapClickHandler />
-
         {filteredPontos.map(ponto => (
-          <Marker 
-            key={ponto.id} 
-            position={[ponto.position[0], ponto.position[1]]}
-            eventHandlers={{
-              click: () => handleMarkerClick(ponto),
-            }}
-          />
+          <Marker key={ponto.id} position={[ponto.position[0], ponto.position[1]]} eventHandlers={{ click: () => handleMarkerClick(ponto), }} />
         ))}
       </MapContainer>
 
-      {/* painel e botão de filtro */}
+      {/* Botão de filtro */}
       {!isFilterOpen && (
         <button className={styles.filterButton} onClick={() => setIsFilterOpen(true)}>
           FILTRO
@@ -150,16 +105,16 @@ const MapaRS = () => {
               &times;
             </button>
           </div>
-          
+
           <p className={styles.filterSectionTitle}>Categorias</p>
           <ul className={styles.filterList}>
             {allTags.map(tag => (
               <li key={tag} className={styles.filterItem}>
-                <input 
-                  type="checkbox" 
-                  id={tag} 
-                  checked={selectedTags.includes(tag)} 
-                  onChange={() => handleFilterChange(tag)} 
+                <input
+                  type="checkbox"
+                  id={tag}
+                  checked={selectedTags.includes(tag)}
+                  onChange={() => handleFilterChange(tag)}
                 />
                 <label htmlFor={tag}>{tag}</label>
               </li>
@@ -168,12 +123,11 @@ const MapaRS = () => {
         </div>
       )}
 
-
-      {/* Renderização do painel lateral */} 
+      {/* Renderização do painel lateral */}
       {selectedPonto && (
-        <SidePanel 
-          ponto={selectedPonto} 
-          onClose={handleClosePanel} 
+        <SidePanel
+          ponto={selectedPonto}
+          onClose={handleClosePanel}
         />
       )}
     </div>
