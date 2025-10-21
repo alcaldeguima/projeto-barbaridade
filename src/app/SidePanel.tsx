@@ -39,7 +39,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
         <div className={styles.section}>
           <h4 className={styles.sectionTitle}>Dados Básicos</h4>
           {Array.isArray(content.dadosBasicos) ? (
-            // Adiciona tipo 'string' ao parâmetro 'item'
+            
             content.dadosBasicos.map((item: string, index: number) => <p key={index}>{item}</p>)
           ) : (
             <p>{content.dadosBasicos}</p>
