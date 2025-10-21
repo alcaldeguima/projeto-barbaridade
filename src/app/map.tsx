@@ -1,142 +1,157 @@
+// MapaRS.js
+
 "use client";
 
-import React, { useState } from "react";
-import { pathMap } from "../app/constants/pathMap";
-import Modal from "./modal";
-import Municipio2ModalContent from "./municipio2ModalContent";
-import Municipio1ModalContent from "./municipio1ModalContent";
+import React, { useState, useMemo } from "react";
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
-function MapaRS() {
-  const [tooltipVisible, setTooltipVisible] = useState(false);
-  const [tooltipVisible2, setTooltipVisible2] = useState(false);
-  const [tooltipVisible3, setTooltipVisible3] = useState(false);
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+import SidePanel from './SidePanel'; 
+import pontosDeInteresse from '../../content/pontos/pontos.json';
+import styles from '../styles/map.module.css';
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [outroModalOpen, setOutroModalOpen] = useState(false);
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
-  const handleMouseEnter = () => setTooltipVisible(true);
-  const handleMouseLeave = () => setTooltipVisible(false);
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: markerIcon2x.src,
+    iconUrl: markerIcon.src,
+    shadowUrl: markerShadow.src,
+});
 
-  const handleMouseEnter2 = () => setTooltipVisible2(true);
-  const handleMouseLeave2 = () => setTooltipVisible2(false);
+const bounds = [
+  [-33.7511, -57.6462],
+  [-27.1302, -49.6919]
+];
 
-  const handleMouseEnter3 = () => setTooltipVisible3(true);
-  const handleMouseLeave3 = () => setTooltipVisible3(false);
+const MapaRS = () => {
+  const initialPosition = [-30.0346, -51.2177];
 
-  const handleMouseMove = (event: React.MouseEvent) => {
-    setTooltipPosition({
-      x: event.clientX,
-      y: event.clientY,
+  // Estado para o painel lateral
+  const [selectedPonto, setSelectedPonto] = useState(null);
+
+  // Estados e lógicas de filtro
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const allTags = useMemo(() => {
+    const tagsSet = new Set<string>();
+    pontosDeInteresse.forEach(ponto => {
+      ponto.tags.forEach(tag => tagsSet.add(tag));
+    });
+    return Array.from(tagsSet);
+  }, []);
+
+  const handleFilterChange = (tag: string) => {
+    setSelectedTags(prevTags => {
+      if (prevTags.includes(tag)) {
+        return prevTags.filter(t => t !== tag);
+      }
+      return [...prevTags, tag];
     });
   };
 
-  return (
-    <div className="flex flex-col h-[95%] light-gradient pt-5">
-      <div
-        id="mapaContainer"
-        className="w-[95%] h-[95%] flex items-center animate-fade-in
-              animate-fade-out  
-              animate-duration-1000 
-              animate-delay-800
-              animate-ease-in-out"
-      >
-        {/* Para poder usar classes no svg é preciso chamar ele assim e usar os paths para criar os pontos*/}
+  const filteredPontos = useMemo(() => {
+    if (selectedTags.length === 0) {
+      return pontosDeInteresse;
+    }
+    return pontosDeInteresse.filter(ponto =>
+      ponto.tags.some(tag => selectedTags.includes(tag))
+    );
+  }, [selectedTags]);
 
-        <svg
-          version="1.1"
-          id="mapa-rs"
-          viewBox="0 0 592.21741 496.62635"
-          xmlns="http://www.w3.org/2000/svg"
-          className="object-contain w-full h-full"
-        >
-          <path
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onMouseMove={handleMouseMove}
-            className="fill-[--dark-green] 
-            cursor-pointer"
-            id="outline-rs"
-            d={pathMap.RS}
-          />
-          <path
-            onMouseEnter={handleMouseEnter2}
-            onMouseLeave={handleMouseLeave2}
-            onMouseMove={handleMouseMove}
-            className={`stroke-[--yellow]
-                        stroke-1
-                        ${modalOpen ? "fill-[--yellow]" : "fill-transparent"}
-                        animate-pulse
-                        cursor-pointer
-                        hover:fill-[--yellow]
-                        hover:animate-none
-                        transition-colors 
-                        duration-300 
-                        ease-in-out`}
-            id="municipios-1"
-            onClick={() => setModalOpen(true)}
-            d={pathMap.MUNICIPIO1}
-          />
-          <path
-            onMouseEnter={handleMouseEnter3}
-            onMouseLeave={handleMouseLeave3}
-            onMouseMove={handleMouseMove}
-            className={`stroke-[--red]
-                        stroke-1
-                        ${outroModalOpen ? "fill-[--red]" : "fill-transparent"}
-                        animate-pulse
-                        cursor-pointer
-                        hover:fill-[--red]
-                        hover:animate-none
-                        transition-colors 
-                        duration-300 
-                        ease-in-out`}
-            id="municipios-2"
-            onClick={() => setOutroModalOpen(true)}
-            d={pathMap.MUNICIPIO2}
-          />
-        </svg>
-        {tooltipVisible && (
-          <div
-            className="absolute px-2 py-1 bg-gray-800 text-white text-sm rounded pointer-events-none transition-opacity duration-200"
-            style={{
-              top: tooltipPosition.y + 10, // Offset from mouse
-              left: tooltipPosition.x + 10,
+  // Função para lidar com o clique em um marcador
+  const handleMarkerClick = (ponto) => {
+    setSelectedPonto(ponto);
+  };
+
+  // Função para fechar o painel
+  const handleClosePanel = () => {
+    setSelectedPonto(null);
+  };
+  
+  // Componente para fechar o painel ao clicar no mapa
+  const MapClickHandler = () => {
+    useMapEvents({
+      click: () => {
+        handleClosePanel();
+      },
+    });
+    return null;
+  };
+
+  return (
+    <div className={styles.mapWrapper} style={{ position: 'relative' }}>
+      <MapContainer 
+        center={initialPosition} 
+        zoom={7} 
+        style={{ height: '100%', width: '100%' }}
+        maxBounds={bounds}
+        minZoom={7}
+        maxBoundsViscosity={1.0}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        
+        <MapClickHandler />
+
+        {filteredPontos.map(ponto => (
+          <Marker 
+            key={ponto.id} 
+            position={[ponto.position[0], ponto.position[1]]}
+            eventHandlers={{
+              click: () => handleMarkerClick(ponto),
             }}
-          >
-            Clique em um município!
+          />
+        ))}
+      </MapContainer>
+
+      {/* painel e botão de filtro */}
+      {!isFilterOpen && (
+        <button className={styles.filterButton} onClick={() => setIsFilterOpen(true)}>
+          FILTRO
+        </button>
+      )}
+      {isFilterOpen && (
+        <div className={styles.filterPanel}>
+          <div className={styles.filterHeader}>
+            <h2>Filtros</h2>
+            <button onClick={() => setIsFilterOpen(false)} className={styles.closeButton}>
+              &times;
+            </button>
           </div>
-        )}
-        {tooltipVisible2 && (
-          <div
-            className="absolute px-2 py-1 bg-gray-800 text-white text-sm rounded cursor-pointer transition-opacity duration-200"
-            style={{
-              top: tooltipPosition.y + 10,
-              left: tooltipPosition.x + 10,
-            }}
-          >
-            Município 1
-          </div>
-        )}
-        {tooltipVisible3 && (
-          <div
-            className="absolute px-2 py-1 bg-gray-800 text-white text-sm rounded cursor-pointer transition-opacity duration-200"
-            style={{
-              top: tooltipPosition.y + 10,
-              left: tooltipPosition.x + 10,
-            }}
-          >
-            Município 2
-          </div>
-        )}
-      </div>
-      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
-        <Municipio1ModalContent />
-      </Modal>
-      <Modal isOpen={outroModalOpen} onClose={() => setOutroModalOpen(false)}>
-        <Municipio2ModalContent />
-      </Modal>
+          
+          <p className={styles.filterSectionTitle}>Categorias</p>
+          <ul className={styles.filterList}>
+            {allTags.map(tag => (
+              <li key={tag} className={styles.filterItem}>
+                <input 
+                  type="checkbox" 
+                  id={tag} 
+                  checked={selectedTags.includes(tag)} 
+                  onChange={() => handleFilterChange(tag)} 
+                />
+                <label htmlFor={tag}>{tag}</label>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+
+      {/* Renderização do painel lateral */}
+      {selectedPonto && (
+        <SidePanel 
+          ponto={selectedPonto} 
+          onClose={handleClosePanel} 
+        />
+      )}
     </div>
   );
-}
+};
+
 export default MapaRS;
