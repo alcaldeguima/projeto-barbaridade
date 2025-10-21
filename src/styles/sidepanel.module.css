@@ -64,15 +64,14 @@
 
 .closeButton {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
-  font-size: 2em;
+  font-size: 1.5rem;
   color: #888;
   cursor: pointer;
-  line-height: 1;
-  z-index: 10; /* Fica acima do conteúdo */
+  transition: color 0.2s;
 }
 
 .closeButton:hover {
@@ -109,13 +108,11 @@
 }
 
 .tag {
-  background-color: #a08c37;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 0.8em;
-  font-weight: bold;
-  text-transform: uppercase;
+  background-color: #f1f1f1;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; /* Formato de pílula */
+  font-size: 0.875rem;
+  color: #555;
 }
 
 .description {
@@ -179,10 +176,13 @@
   padding-left: 20px;
   font-size: 0.9em;
   color: #555;
+  list-style-position: outside; /* Números ficam fora do bloco de texto */
 }
 
 .referencesList li {
-  margin-bottom: 10px;
+  margin-bottom: 12px; /* Espaçamento entre cada referência */
+  padding-left: 10px; /* Cria o espaço para o recuo */
+  text-indent: -10px; /* Puxa a primeira linha de volta, criando o efeito de recuo deslocado */
 }
 
 /* Estilos para Lugares de Memória */
@@ -297,4 +297,89 @@
 /* Pequeno ajuste para a galeria de imagens não ficar colada nos textos */
 .imageGallery {
   margin-top: 25px;
+}
+
+/* src/styles/sidepanel.module.css */
+
+.sidePanel {
+  position: absolute; /* Posição absoluta relativa ao wrapper do mapa */
+  top: 0;
+  right: 0;
+  width: 400px; /* Largura do painel */
+  max-width: 90vw; /* Garante que não seja maior que a tela em telemóveis */
+  height: 100%; /* Altura total */
+  background-color: #ffffff;
+  border-left: 1px solid #e0e0e0;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Garante que fique por cima do mapa (Leaflet) */
+  padding: 2rem;
+  overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+  
+  /* Animação de entrada */
+  transform: translateX(100%);
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: #000;
+}
+
+.sidePanel h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 0.5rem;
+  padding-right: 2rem; /* Espaço para o botão de fechar */
+}
+
+.cityState {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  background-color: #f1f1f1;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; /* Formato de pílula */
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.sidePanel p {
+  line-height: 1.7;
+  color: #333;
+}
+
+.images {
+  margin-top: 1.5rem;
+}
+
+/* Animação para o painel deslizar da direita */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

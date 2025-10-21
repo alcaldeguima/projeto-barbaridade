@@ -1,37 +1,39 @@
 "use client";
 
 import Link from 'next/link';
-import styles from './navbar.module.css';
+import Image from 'next/image';
+import styles from '@/styles/navbar.module.css';
 
 export default function Navbar() {
   return (
     <nav className={styles.navContainer}>
       <div className={styles.navContent}>
-        <Link href="/" className={styles.logo}>
-          Barbaridade!
+        {/* Logo como link para a página inicial */}
+        <Link href="/" className={styles.logoLink}>
+          <Image
+            src="/assets/logo.png" // atualizado para o novo nome
+            alt="Logo Projeto Barbaridade"
+            width={180}
+            height={40}
+            priority
+            style={{ height: 'auto' }}
+          />
         </Link>
-        
+
         <div className={styles.navLinks}>
           <Link href="/" className={styles.link}>
             Mapa Interativo
           </Link>
-
-         
           <Link href="/timeline" className={styles.link}>
             Linha do Tempo
           </Link>
-
           {/* <Link href="/temas" className={styles.link}>
             Temas
           </Link> */}
-
-          
-
           <div className={styles.dropdown}>
             <button className={styles.link}>
               Sobre o Projeto ▼
             </button>
-            
             <div className={styles.dropdownMenu}>
               <Link href="/sobre" className={styles.dropdownLink}>
                 Sobre Nós

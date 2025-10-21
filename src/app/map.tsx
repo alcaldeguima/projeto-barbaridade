@@ -64,6 +64,7 @@ const MapaRS = () => {
 
   // Função para lidar com o clique em um marcador
   const handleMarkerClick = (ponto) => {
+    console.log("click funcionando Dados do ponto:", ponto); // Adicionado para depuração
     setSelectedPonto(ponto);
   };
 

@@ -2,7 +2,7 @@
 .navContainer {
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem; /* 8px de padding vertical (mais justo) */
   position: sticky;
   top: 0;
   z-index: 100;
@@ -16,11 +16,12 @@
   align-items: center;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+/* Estilo para o link que contém a imagem da logo */
+.logoLink {
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  color: #111;
+  color: inherit;
 }
 
 .navLinks {
@@ -45,7 +46,7 @@
   color: #000;
 }
 
-/* --- Novos Estilos para o Dropdown --- */
+/* --- Estilos do Dropdown (Mantidos) --- */
 .dropdown {
   position: relative;
 }
@@ -59,25 +60,23 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border: 1px solid #eee;
   padding: 0.5rem 0;
+  margin-top: 0.5rem;
   z-index: 10;
   display: flex;
   flex-direction: column;
   width: max-content;
-  
-  /* Lógica aprimorada para esconder/mostrar */
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-50%) translateY(10px); /* Começa um pouco abaixo */
-  pointer-events: none; /* Não é clicável quando invisível */
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* Mágica do CSS: Quando o mouse está sobre .dropdown, o .dropdownMenu dentro dele se torna visível */
 .dropdown:hover .dropdownMenu {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0); /* Sobe para a posição final */
-  pointer-events: auto; /* Torna-se clicável */
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
 }
 
 .dropdownLink {
@@ -90,4 +89,4 @@
 
 .dropdownLink:hover {
   background-color: #f7f7f7;
-} 
+}
