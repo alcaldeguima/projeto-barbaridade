@@ -66,6 +66,12 @@ export default function EquipePage() {
             <span className={styles.area}>Educação - UFPel</span>
           </p>
         </div>
+        <div className={styles.card}>
+          <p className={styles.membroInfo}>
+            <span className={styles.nome}>Guilherme Ribeiro Corrêa</span>
+            <span className={styles.area}>Centro de Desenvolvimento Tecnológico - UFPel</span>
+          </p>
+        </div>
       </div>
 
       {/* DISCENTES */}
@@ -75,12 +81,6 @@ export default function EquipePage() {
           <p className={styles.membroInfo}>
             <span className={styles.nome}>Darlise Gonçalves de Gonçalves</span>
             <span className={styles.area}>PPG História - UFPel</span>
-          </p>
-        </div>
-        <div className={styles.card}>
-          <p className={styles.membroInfo}>
-            <span className={styles.nome}>Guilherme Ribeiro Corrêa</span>
-            <span className={styles.area}>Centro de Desenvolvimento Tecnológico - UFPel</span>
           </p>
         </div>
         <div className={styles.card}>
