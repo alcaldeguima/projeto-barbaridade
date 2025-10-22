@@ -14,7 +14,7 @@ export default function Navbar() {
             src="/assets/logoMenor.jpg" // atualizado para o novo nome
             alt="Logo Projeto Barbaridade"
             width={220}
-            height={49}
+            height={40}
             priority
             style={{ height: 'auto' }}
           />
@@ -27,9 +27,9 @@ export default function Navbar() {
           <Link href="/timeline" className={styles.link}>
             Linha do Tempo
           </Link>
-          {/* <Link href="/temas" className={styles.link}>
+           <Link href="/temas" className={styles.link}>
             Temas
-          </Link> */}
+          </Link> 
           <div className={styles.dropdown}>
             <button className={styles.link}>
               Sobre o Projeto ▼

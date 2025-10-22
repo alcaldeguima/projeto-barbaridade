@@ -59,6 +59,5 @@ body {
 main {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  overflow-y: auto; /* Adiciona rolagem apenas na área principal */
+  flex-direction: column;   
 }

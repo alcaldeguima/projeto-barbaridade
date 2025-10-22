@@ -2,7 +2,7 @@
 .navContainer {
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
-  padding: 0.25rem 2rem;
+  padding: 0.15rem 0;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -24,8 +24,6 @@
   color: inherit;
 }
 
-/* Removemos o estilo antigo do .logo que era para texto */
-
 .navLinks {
   display: flex;
   align-items: center;
@@ -42,6 +40,7 @@
   padding: 0.5rem 0;
   font-family: inherit;
   transition: color 0.2s ease-in-out;
+  font-weight: 700;
 }
 
 .link:hover {
@@ -90,6 +89,8 @@
   text-decoration: none;
   white-space: nowrap;
   transition: background-color 0.2s ease-in-out;
+  font-weight:bold;
+
 }
 
 .dropdownLink:hover {
