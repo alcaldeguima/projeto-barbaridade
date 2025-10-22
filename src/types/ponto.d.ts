@@ -39,6 +39,6 @@ export interface PontoData {
   name: string;
   cityState: string;
   tags: string[];
-  position: number[];
+  position: [number, number]; 
   content?: any;
 }

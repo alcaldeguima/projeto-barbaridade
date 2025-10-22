@@ -57,7 +57,7 @@ export default function EquipePage() {
         <div className={styles.card}>
           <p className={styles.membroInfo}>
             <span className={styles.nome}>Guilherme Ribeiro Corrêa</span>
-            <span className={styles.area}>Centro de Desenvolvimento Tecnológico - UFPel</span>
+            <span className={styles.area}>Computação - UFPel</span>
           </p>
         </div>
         <div className={styles.card}>
@@ -157,7 +157,7 @@ export default function EquipePage() {
         </div>
         <div className={styles.card}>
           <p className={styles.membroInfo}>
-            <span className={styles.nome}>Yuri Nunes</span>
+            <span className={styles.nome}>Yuri de Melo Zorzoli Nunes</span>
             <span className={styles.area}>Ciência da Computação - UFPel</span>
           </p>
         </div>

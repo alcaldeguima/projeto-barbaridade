@@ -2,10 +2,10 @@
 .navContainer {
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
-  padding: 0.25rem 2rem; /* 4px de padding vertical (ainda mais justo) */
+  padding: 0.25rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 999;
 }
 
 .navContent {
@@ -55,30 +55,33 @@
 
 .dropdownMenu {
   position: absolute;
-  top: 100%;
+  top: 100%; /* Posiciona abaixo do botão */
   left: 50%;
+  transform: translateX(-50%); /* Apenas para centralizar horizontalmente */
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border: 1px solid #eee;
   padding: 0.5rem 0;
-  margin-top: 0.5rem;
-  z-index: 10;
+  /*margin-top: 0.5rem; /* Espaço entre o botão e o menu */
+  z-index: 1000; /* Mantém o z-index alto */
   display: flex;
   flex-direction: column;
   width: max-content;
+
+  /* Nova lógica para esconder/mostrar (sem transform Y) */
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-50%) translateY(10px);
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease; /* Transição suave */
 }
 
+/* Mostra o menu no hover do PAI (.dropdown) */
 .dropdown:hover .dropdownMenu {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
   pointer-events: auto;
+  /* Não precisamos mais alterar o transform aqui */
 }
 
 .dropdownLink {

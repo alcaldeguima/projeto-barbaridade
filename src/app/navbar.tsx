@@ -11,10 +11,10 @@ export default function Navbar() {
         {/* Logo como link para a página inicial */}
         <Link href="/" className={styles.logoLink}>
           <Image
-            src="/assets/logo.png" // atualizado para o novo nome
+            src="/assets/logoMenor.jpg" // atualizado para o novo nome
             alt="Logo Projeto Barbaridade"
-            width={180}
-            height={40}
+            width={220}
+            height={49}
             priority
             style={{ height: 'auto' }}
           />

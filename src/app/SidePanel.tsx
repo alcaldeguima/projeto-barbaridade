@@ -13,7 +13,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
   if (!ponto) return null;
   const { name, cityState, tags, content } = ponto;
 
-  // Verificações de segurança (mantidas como antes)
+  // Verificações de segurança 
   const hasMateriaisAdicionais =
     (content?.materiaisAdicionais?.imagens?.length ?? 0) > 0 ||
     Boolean(content?.materiaisAdicionais?.video) ||
@@ -27,7 +27,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
       <button onClick={onClose} className={styles.closeButton}>
         &times;
       </button>
-      <h2>{name}</h2>
+      <h2>Aconteceu em {name}</h2>
       <p className={styles.cityState}>{cityState}</p>
       <div className={styles.tags}>
         {/* Adiciona tipo 'string' ao parâmetro 'tag' */}

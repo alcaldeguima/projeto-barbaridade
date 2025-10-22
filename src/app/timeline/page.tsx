@@ -12,7 +12,7 @@ export default function LinhaDoTempoPage() {
       {/* Container do Iframe */}
       <div style={{ border: '1px solid #ddd', borderRadius: '8px', overflow: 'hidden' }}>
         <iframe
-            src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ-Cb_fr6KeKq_bSygE7mAHe45SwC2BqeqPhg9zNnc6JVAu_IDDA5SQ-sr-nNf3o_7eV6C-HlYmpgDj&font=Default&lang=en&initial_zoom=2&width=100%25&height=650'
+            src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ-Cb_fr6KeKq_bSygE7mAHe45SwC2BqeqPhg9zNnc6JVAu_IDDA5SQ-sr-nNf3o_7eV6C-HlYmpgDj&font=Default&lang=pt-br&initial_zoom=2&width=100%25&height=650'
             width='100%'
             height='650'
             style={{ border: 'none' }}
