@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="bg-gray-100 text-gray-800 py-3 px-4 mt-auto border-t border-gray-300">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 text-center md:text-left">
         
-        {/* Logo UFPel */}
+        {/* logo UFPel */}
         <Image
           src="/assets/ufpel.png" 
           alt="Logo UFPel"
@@ -20,7 +20,6 @@ export default function Footer() {
           className="h-auto"
         />
 
-        {/* Linha vertical entre logo e texto */}
         <div className="hidden md:block h-16 border-l border-gray-400 mx-3"></div>
 
         {/* Texto e ícones */}
@@ -34,7 +33,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Ícones */}
+          {/*icones */}
           <div className="flex items-center justify-center md:justify-start gap-4 mt-1">
             <Link 
               href="https://github.com/alcaldeguima/projeto-barbaridade" 
@@ -46,7 +45,7 @@ export default function Footer() {
             </Link>
             
             <Link 
-              href="mailto:123@gmail.com" // substitui pelo email real
+              href="mailto:123@gmail.com" // substitui pelo email real !!!!!!!!!!!!!!
               aria-label="Email"
             >
               <FaEnvelope className="w-5 h-5 hover:text-gray-600 transition-colors" />

@@ -10,13 +10,13 @@
   padding: 2rem;
   overflow-y: auto; 
   position: relative; 
-  /* Animação de entrada */
+
   transform: translateX(0); /* Começa visível no fluxo normal */
   opacity: 1;
-  /* A transição será controlada pelo mapContainer pai */
+
 }
 
-/* ... (restante dos estilos .closeButton, h2, p, .tags, etc. mantidos) ... */
+
 .closeButton {
   position: absolute; top: 1rem; right: 1rem; background: none; border: none;
   font-size: 1.5rem; color: #888; cursor: pointer; transition: color 0.2s;
@@ -40,14 +40,14 @@
 .videoWrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 
-.textList a { /* Links dentro da lista de textos */
-  color: var(--cor-destaque, #007bff); /* Usar variável de destaque se definida, senão um azul */
+.textList a { 
+  color: var(--cor-destaque, #007bff); 
 }
 .textList a:hover {
   text-decoration: underline;
 }
 
-/* Animação para o painel deslizar */
+/*slide no painel */
 @keyframes slideInFromRight {
   from {
     transform: translateX(100%);

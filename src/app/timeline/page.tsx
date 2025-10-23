@@ -9,16 +9,15 @@ export default function LinhaDoTempoPage() {
         </p>
       </header>
 
-      {/* Container do Iframe */}
+      {/* div Iframe */}
       <div style={{ border: '1px solid #ddd', borderRadius: '8px', overflow: 'hidden' }}>
         <iframe
             src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ-Cb_fr6KeKq_bSygE7mAHe45SwC2BqeqPhg9zNnc6JVAu_IDDA5SQ-sr-nNf3o_7eV6C-HlYmpgDj&font=Default&lang=pt-br&initial_zoom=2&width=100%25&height=650'
             width='100%'
             height='650'
             style={{ border: 'none' }}
-            // Atributos corrigidos para camelCase e/ou valor booleano
             allowFullScreen={true}
-            frameBorder="0" // frameBorder com 'B' maiúsculo e valor como string ou número
+            frameBorder="0"
           >
         </iframe>  
         <div className="w-full max-w-4xl mx-auto px-4 py-8">

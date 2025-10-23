@@ -2,31 +2,29 @@
 
 .mapWrapper {
   display: flex;
-  height: calc(100vh - 52px); /* Altura da tela menos a altura do header (ajuste 0.35rem * 16px * 2 + logoheight?) */
+  height: calc(100vh - 52px); /* altura da tela - altura do header ( 0.35rem * 16px * 2 + logoheight?) */
   width: 100%;
   position: relative; 
   overflow: hidden; 
   z-index: 1;
 }
 
-/* Container do mapa agora tem largura variável com transição */
 .mapContainer {
   height: 100%;
-  width: 100%; /* Começa com 100% */
-  position: relative; /* Necessário para Leaflet */
-  transition: width 0.5s ease-in-out; /* Transição suave na largura */
-  background-color: #AAD3DF; /* Azul claro similar ao mar OSM - Fundo */
-  flex-shrink: 0; /* Impede que encolha inesperadamente */
+  width: 100%; 
+  position: relative;
+  transition: width 0.5s ease-in-out;
+  background-color: #AAD3DF; 
+  flex-shrink: 0;
   
 }
 
-/* Classe aplicada quando o painel está aberto */
+
 .mapContainerShifted {
-  width: 60%; /* Reduz para 60% */
+  width: 60%;
 }
 
 
-/* Copie todos os estilos do filtro da sua versão anterior para cá */
 .filterButton {
   position: absolute; bottom: 1rem; left: 1rem; z-index: 1000; background-color: rgb(0, 0, 0);
   padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 4px; cursor: pointer;

@@ -13,7 +13,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
   if (!ponto) return null;
   const { name, autor, tags, content } = ponto;
 
-  // Verificações de segurança 
+  // Verificacoes 
   const hasMateriaisAdicionais =
     (content?.materiaisAdicionais?.imagens?.length ?? 0) > 0 ||
     Boolean(content?.materiaisAdicionais?.video) ||
@@ -30,7 +30,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
       <h2>{name}</h2>
       <p className={styles.autor}>{autor}</p>
       <div className={styles.tags}>
-        {/* Adiciona tipo 'string' ao parâmetro 'tag' */}
+        {/* tag -> tipo string */}
         {tags?.map((tag: string, index: number) => (
           <span key={index} className={styles.tag}>{tag}</span>
         ))}
@@ -49,7 +49,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
       {content?.verbete && content.verbete.length > 0 && (
         <div className={styles.section}>
           <h4 className={styles.sectionTitle}>Verbete</h4>
-          {/* Adiciona tipo 'string' ao parâmetro 'paragrafo' */}
+          {/*paragrafo -> tipo string */}
           {content.verbete.map((paragrafo: string, index: number) => <p key={index}>{paragrafo}</p>)}
         </div>
       )}
@@ -57,7 +57,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
           <div className={styles.section}>
             <h4 className={styles.sectionTitle}>Lugares de Memória</h4>
             <ul className={styles.list}>
-              {/* Adiciona tipo 'LugaresDeMemoria' ao parâmetro 'lugar' */}
+              {/*lugar -> tipo lugaresDeMemoria*/}
               {content?.lugaresDeMemoria?.map((lugar: LugaresDeMemoria, index: number) => (
                 <li key={index}><strong>{lugar.nome}</strong>: {lugar.descricao}</li>
               ))}
@@ -68,7 +68,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
           <div className={styles.section}>
             <h4 className={styles.sectionTitle}>Espaços de Consulta</h4>
             <ul className={styles.list}>
-              {/* Adiciona tipo 'EspacosDeConsulta' ao parâmetro 'espaco' */}
+              {/* espaco -> espacosDeConsulta */}
               {content?.espacosDeConsulta?.map((espaco: EspacosDeConsulta, index: number) => (
                 <li key={index}>
                   {espaco.url ? (<a href={espaco.url} target="_blank" rel="noopener noreferrer">{espaco.nome}</a>) : (espaco.nome)}
@@ -87,7 +87,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
             </div>
           )}
           <div className={styles.images}>
-            {/* Adiciona tipo 'MaterialAdicionalItem' ao parâmetro 'item' */}
+            {/* item ->  tipo MaterialAdicionalItem */}
             {content?.materiaisAdicionais?.imagens?.map((item: MaterialAdicionalItem, index: number) => (
               <div key={index} className={styles.imageItem}>
 
@@ -110,7 +110,6 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
             ))}
           </div>
           <ul className={styles.textList}>
-            {/* Adiciona tipo 'MaterialAdicionalItem' ao parâmetro 'item' */}
             {content?.materiaisAdicionais?.textos?.map((item: MaterialAdicionalItem, index: number) => (
               <li key={index}>
                 {item.url ? (<a href={item.url} target="_blank" rel="noopener noreferrer">{item.nome || item.descricao || item.url}</a>) : (item.descricao)}
@@ -123,7 +122,7 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
         <div className={styles.section}>
           <h4 className={styles.sectionTitle}>Referências</h4>
           <ul className={styles.list}>
-            {/* Adiciona tipo 'string' ao parâmetro 'ref' */}
+            {/* ref -> tipo string*/}
             {content?.referencias?.map((ref: string, index: number) => (<li key={index}>{ref}</li>))}
           </ul>
         </div>

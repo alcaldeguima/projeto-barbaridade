@@ -3,13 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
+
+  /*inconsistencia no css dependendo do tema claro/escuro do navegador
+  --background: #ffffff;  
+  --foreground: #0a0a0a;*/
+  
   --dark-green: #306437;
   --middle-green: #4f7b58;
   --light-green: #8ab8a2;
   --yellow: #fee886;
   --red: #cc3a3d;
+  --background: #0a0a0a; /* Fundo Preto */
+  --foreground: #ededed; /* Texto Branco */
+
 }
 
 .light-gradient {

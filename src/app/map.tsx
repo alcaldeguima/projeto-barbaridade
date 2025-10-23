@@ -76,7 +76,7 @@ const MapaRS: React.FC = () => {
           map.panTo(selectedPonto.position, { animate: true, duration: 0.4 }); 
         } 
         else {
-          // Se o painel fechou, volta ao centro original
+          // painel fechado, centraliza no RS
           map.panTo(initialPosition, { animate: true, duration: 0.4 });
         }
 
@@ -84,7 +84,7 @@ const MapaRS: React.FC = () => {
 
     return () => clearTimeout(resizeTimer);
   }
-}, [selectedPonto]); // A dependência continua sendo selectedPonto
+}, [selectedPonto]); 
 
   const handleFilterChange = (tag: string) => {
     setSelectedTags(prevTags => {
@@ -124,19 +124,19 @@ const MapaRS: React.FC = () => {
       {/* Aplica a classe condicional baseada no estado selectedPonto */}
       <div className={`${styles.mapContainer} ${selectedPonto ? styles.mapContainerShifted : ''}`}>
         <MapContainer
-          center={initialPosition} // Usa a posição inicial centralizada
+          center={initialPosition}
           zoom={6.7}
           style={{ height: '100%', width: '100%' }}
-          maxBounds={bounds} // Usa os novos limites mais amplos
-          minZoom={6} // Permite um pouco mais de zoom out
-          maxZoom={9}
-          dragging={true}
-          zoomControl={true}
+          maxBounds={bounds} // Usa 
+          minZoom={6} //zoom out
+          maxZoom={9} //zoom in
+          dragging={true} //ativa o arrastar
+          zoomControl={true} //ativa o zoom
           doubleClickZoom={false}
           ref={mapRef}
           zoomDelta={0.5} 
           zoomSnap={0.5}
-          maxBoundsViscosity={0.9}
+          maxBoundsViscosity={0.9} // limita movimentação no mapa
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -152,8 +152,8 @@ const MapaRS: React.FC = () => {
           ))}
         </MapContainer>
 
-        {/* Botão e painel de filtro */}
-        {!isFilterOpen && ( /* Renderiza o botão apenas se o painel de filtro NÃO estiver aberto */
+        {/*filtro */}
+        {!isFilterOpen && ( /* renderiza só quando o painel dos filtros esta fechado */
           <button className={styles.filterButton} onClick={() => setIsFilterOpen(true)}>
             FILTRO
           </button>
@@ -179,7 +179,7 @@ const MapaRS: React.FC = () => {
         )}
       </div> 
 
-      {/* Renderização do painel lateral */}
+      {/* SidePanel */}
       {selectedPonto && (
         <SidePanel
           ponto={selectedPonto}
