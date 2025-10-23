@@ -18,6 +18,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Projeto Barbaridade",
   description: "Descrição do projeto",
+  icons: {
+    icon: '/assets/logo.jpg',
+  },
 };
 
 export default function RootLayout({
