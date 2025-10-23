@@ -16,6 +16,7 @@
   transition: width 0.5s ease-in-out; /* Transição suave na largura */
   background-color: #AAD3DF; /* Azul claro similar ao mar OSM - Fundo */
   flex-shrink: 0; /* Impede que encolha inesperadamente */
+  
 }
 
 /* Classe aplicada quando o painel está aberto */

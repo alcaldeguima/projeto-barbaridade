@@ -37,11 +37,13 @@ const pontos: PontoData[] = pontosDeInteresse.map(ponto => ({
 })) as PontoData[];
 
 const bounds: L.LatLngBoundsExpression = [
-    [-34.5, -56.5], // Oeste mais restrito (número menos negativo)
-    [-26.5, -49.5] // Leste mantido
+  [-33.8, -56.2], 
+  [-27.0, -49.8]  
 ];
+
+
 const MapaRS: React.FC = () => {
-  const initialPosition: L.LatLngExpression = [-30.5, -53.5]; 
+  const initialPosition: L.LatLngExpression = [-30.5, -52.5]; 
   const [selectedPonto, setSelectedPonto] = useState<PontoData | null>(null)
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -56,32 +58,30 @@ const MapaRS: React.FC = () => {
   }, []);
 
   useEffect(() => {
-  const map = mapRef.current;
-  if (map) {
-    // Pequeno delay para a transição CSS começar
-    const resizeTimer = setTimeout(() => {
-      map.invalidateSize({ animate: true }); // Redimensiona
+    const map = mapRef.current;
+    if (map) {
+      map.setView(initialPosition, 7, { animate: true });
 
-      // Se um ponto foi selecionado (painel abriu), desliza o mapa
-      if (selectedPonto) {
-        // Calcula o deslocamento horizontal necessário (aprox. 20% da largura da tela, pois o painel ocupa 40%)
-        const mapWidth = map.getSize().x;
-        const offsetPixels = mapWidth * 0.20; 
+        map.on('drag', () => {
+       map.panInsideBounds(bounds, { animate: false });
+  });
+      
+      const resizeTimer = setTimeout(() => {
+        
+      
+        map.invalidateSize({ animate: true }); 
 
-        // Converte pixels para unidades de mapa (LatLng) no nível de zoom atual
-        const currentCenterPoint = map.project(selectedPonto.position, map.getZoom());
-        const targetPoint = currentCenterPoint.subtract([offsetPixels, 0]); // Desloca para a esquerda (subtrai no eixo X)
-        const targetLatLng = map.unproject(targetPoint, map.getZoom());
+        if (selectedPonto) {
+          
+          map.panTo(selectedPonto.position, { animate: true, duration: 0.4 }); 
+        } 
+        else {
+          // Se o painel fechou, volta ao centro original
+          map.panTo(initialPosition, { animate: true, duration: 0.4 });
+        }
 
-        map.panTo(targetLatLng, { animate: true, duration: 0.4 }); // Desliza suavemente
-      } 
-      else {
-        map.panTo(initialPosition, { animate: true, duration: 0.4 });
-      }
+      }, 350);
 
-    }, 150); // Aumentei um pouco o delay para garantir
-
-    // Limpa o timer se o componente desmontar ou o estado mudar antes
     return () => clearTimeout(resizeTimer);
   }
 }, [selectedPonto]); // A dependência continua sendo selectedPonto
@@ -125,12 +125,18 @@ const MapaRS: React.FC = () => {
       <div className={`${styles.mapContainer} ${selectedPonto ? styles.mapContainerShifted : ''}`}>
         <MapContainer
           center={initialPosition} // Usa a posição inicial centralizada
-          zoom={7}
+          zoom={6.7}
           style={{ height: '100%', width: '100%' }}
           maxBounds={bounds} // Usa os novos limites mais amplos
           minZoom={6} // Permite um pouco mais de zoom out
-          maxBoundsViscosity={0.9} // Permite um leve "elástico" nos limites
+          maxZoom={9}
+          dragging={true}
+          zoomControl={true}
+          doubleClickZoom={false}
           ref={mapRef}
+          zoomDelta={0.5} 
+          zoomSnap={0.5}
+          maxBoundsViscosity={0.9}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

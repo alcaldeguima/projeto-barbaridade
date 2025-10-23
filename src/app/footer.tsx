@@ -8,48 +8,48 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-100 text-gray-800 py-2 px-4 mt-auto border-t border-gray-300">
-      
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6">
-
+    <footer className="bg-gray-100 text-gray-800 py-3 px-4 mt-auto border-t border-gray-300">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 text-center md:text-left">
+        
         {/* Logo UFPel */}
         <Image
           src="/assets/ufpel.png" 
           alt="Logo UFPel"
-          width={80}
-          height={80}
+          width={70}
+          height={70}
           className="h-auto"
         />
 
-        <div className="hidden md:block h-20 border-l border-gray-400 mx-4"></div>
+        {/* Linha vertical entre logo e texto */}
+        <div className="hidden md:block h-16 border-l border-gray-400 mx-3"></div>
 
-        <div className="flex flex-col items-center md:items-start gap-3">
-          
-          <div>
-            <p className="text-lg font-semibold text-gray-900 text-center md:text-left">
+        {/* Texto e ícones */}
+        <div className="flex flex-col items-center md:items-start gap-2">
+          <div className="leading-tight">
+            <p className="text-lg font-semibold text-gray-900">
               Portal Barbaridade:
             </p>
-            <p className="text-lg font-semibold text-gray-900 text-center md:text-left">
+            <p className="text-base font-medium text-gray-800 italic">
               "A ditadura no Rio Grande do Sul"
             </p>
           </div>
 
-          {/* icones */}
-          <div className="flex space-x-6">
+          {/* Ícones */}
+          <div className="flex items-center justify-center md:justify-start gap-4 mt-1">
             <Link 
               href="https://github.com/alcaldeguima/projeto-barbaridade" 
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="GitHub"
             >
-              <FaGithub className="w-6 h-6 hover:text-gray-600 transition-colors" />
+              <FaGithub className="w-5 h-5 hover:text-gray-600 transition-colors" />
             </Link>
             
             <Link 
-              href="123@gmail.com" //trocar email
+              href="mailto:123@gmail.com" // substitui pelo email real
               aria-label="Email"
             >
-              <FaEnvelope className="w-6 h-6 hover:text-gray-600 transition-colors" />
+              <FaEnvelope className="w-5 h-5 hover:text-gray-600 transition-colors" />
             </Link>
             
             <Link 
@@ -58,11 +58,13 @@ export default function Footer() {
               rel="noopener noreferrer" 
               aria-label="Instagram"
             >
-              <FaInstagram className="w-6 h-6 hover:text-gray-600 transition-colors" />
+              <FaInstagram className="w-5 h-5 hover:text-gray-600 transition-colors" />
             </Link>
           </div>
-          
-          <p className="text-sm text-gray-600 mt-1">&copy; {currentYear} Universidade Federal de Pelotas</p>
+
+          <p className="text-sm text-gray-600 mt-1">
+            © {currentYear} Universidade Federal de Pelotas
+          </p>
         </div>
       </div>
     </footer>

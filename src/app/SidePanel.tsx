@@ -11,7 +11,7 @@ interface SidePanelProps {
 
 const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
   if (!ponto) return null;
-  const { name, cityState, tags, content } = ponto;
+  const { name, autor, tags, content } = ponto;
 
   // Verificações de segurança 
   const hasMateriaisAdicionais =
@@ -27,8 +27,8 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
       <button onClick={onClose} className={styles.closeButton}>
         &times;
       </button>
-      <h2>Aconteceu em {name}</h2>
-      <p className={styles.cityState}>{cityState}</p>
+      <h2>{name}</h2>
+      <p className={styles.autor}>{autor}</p>
       <div className={styles.tags}>
         {/* Adiciona tipo 'string' ao parâmetro 'tag' */}
         {tags?.map((tag: string, index: number) => (
@@ -90,7 +90,21 @@ const SidePanel: React.FC<SidePanelProps> = ({ ponto, onClose }) => {
             {/* Adiciona tipo 'MaterialAdicionalItem' ao parâmetro 'item' */}
             {content?.materiaisAdicionais?.imagens?.map((item: MaterialAdicionalItem, index: number) => (
               <div key={index} className={styles.imageItem}>
-                <Image src={item.url || ''} alt={item.caption || `${name} - Imagem ${index + 1}`} width={500} height={300} style={{ width: '100%', height: 'auto', objectFit: 'cover', borderRadius: '4px', marginTop: '1rem' }} />
+
+          <a
+            href={item.url || ''}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Abrir imagem em nova guia"
+          >
+            <Image
+              src={item.url || ''}
+              alt={item.caption || `${name} - Imagem ${index + 1}`}
+              width={500}
+              height={300}
+             style={{ width: '100%', height: 'auto', objectFit: 'cover', borderRadius: '4px', marginTop: '1rem', cursor: 'pointer' }}
+          />
+        </a>
                 {item.caption && <p className={styles.caption}>{item.caption}</p>}
               </div>
             ))}

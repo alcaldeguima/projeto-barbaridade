@@ -2,8 +2,8 @@
   {
     "id": 4,
     "position": [-27.458, -53.933],
-    "name": "Verbete Três Passos",
-    "cityState": "Três Passos – RS",
+    "name": "Aconteceu em Três Passos",
+    "autor": "Por Gabriel Aver",
     "tags": ["Ditadura", "Resistência Armada", "Guerrilha Rural", "Repressão"],
     "content": {
       "dadosBasicos": "Localizado no noroeste do Rio Grande do Sul, o município de Três Passos foi fundado em 28 de dezembro de 1944. Na data, o município contava com aproximadamente 37 casas de madeira e tinha sua economia fundamentada na produção de grãos e na extração de madeira.",
@@ -38,8 +38,8 @@
   {
     "id": 5,
     "position": [-30.8913, -55.5330],
-    "name": "Verbete Santana do Livramento",
-    "cityState": "Santana do Livramento – RS",
+    "name": "Aconteceu em Santana do Livramento",
+    "autor": "Por Marla Assumpção Barbosa",
     "tags": ["Ditadura", "Fronteira", "Exílio", "Resistência", "Redes de Solidariedade"],
     "content": {
       "dadosBasicos": "Santana do Livramento é um município de fronteira seca com o Uruguai, localizado no sudoeste rio-grandens. Sua fundação remonta ao século XIX, e a população municipal foi estimada em cerca de 56.000 habitantes em 1960, crescendo para 68.000 em 1980.",
@@ -67,8 +67,8 @@
   {
     "id": 6,
     "position": [-28.3001,-54.2950],
-    "name": "Verbete Santo Angelo",
-    "cityState": "Santo Angelo – RS",
+    "name": "Aconteceu em Santo Angelo",
+    "autor": "Por Vicente dos Santos Schneider",
     "tags": ["Ditadura", "Repressão Política", "Movimentos Sociais", "Resistência Cultural", "Movimento Estudantil"],
     "content": {
       "dadosBasicos": "Município brasileiro localizado na região Noroeste do Rio Grande do Sul. Foi fundado como povoado integrante dos Sete Povos das Missões, em 12 de agosto de 1706, pelo padre jesuíta Diogo Haze, no contexto da edificação das reduções missioneiras nos séculos XVII e XVIII. Após a destruição das reduções missioneiras pelas coroas de Espanha e Portugal na Guerra Guaranítica (1753-1756), a região das missões ficou abandonada por quase cem anos. O repovoamento aconteceu por volta de 1830 como consequência da divisão do território e da distribuição de sesmarias para migrantes paulistas. Repovoado como distrito de Cruz Alta, a cidade de Santo Ângelo emancipou-se administrativamente em 1873 e, no final do século XIX, passou a receber imigrantes de diversas nacionalidades. Na década de 1920, a cidade contava com cerca de 46.356 habitantes e foi ponto de partida da Coluna Prestes, movimento de jovens tenentes que enfrentou as oligarquias e defendeu reformas sociais e políticas no contexto da Primeira República. Na década de 1960, período do governo João Goulart, e posteriormente ao Golpe civil-militar de 1964, o município já tinha uma população de 75.255 habitantes. A cidade vivenciou a efervescência política e cultural dos anos 60 e 70, tendo sido palco de atuação dos movimentos populares que lutaram pelas Reformas de Base e que, posteriormente, passaram a se opor à ditadura e ao desencadeamento da repressão.",
@@ -148,8 +148,8 @@
   {
     "id": 7,
     "position": [-28.6640,-56.0525],
-    "name": "Verbete Sao Borja",
-    "cityState": "São Borja – RS",
+    "name": "Aconteceu em Sao Borja",
+    "autor": "Por Camila de Almeida Silva",
     "tags": ["Ditadura", "Fronteira", "Repressão Política", "Exílio", "Trabalhismo"],
     "content": {
       "dadosBasicos": "(localizada no oeste do Rio Grande do Sul, fronteira com a Argentina, “separada” pelo rio Uruguai, foi fundada em 1887, é o núcleo habitacional mais antigo do território riograndense. A cidade, de acordo com o censo demográfico nos anos 60, possuía 50.009 habitantes, a maior parte dela, 28.962 vivendo no campo. Durante a Ditadura Civil-Militar, a cidade estava bastante militarizada, possuindo dois quartéis: o 2º Regimento de Cavalaria Mecanizada (2º RC Mec) e o 26º Grupo de Artilharia de Campanha, além do Corpo de Fuzileiros Navais, a Brigada Militar e a Polícia Civil.",
@@ -187,8 +187,8 @@
   {
     "id": 8,
     "position": [-30.0262,-52.9045],
-    "name": "Verbete Cachoeira do Sul",
-    "cityState": "Cachoeira do Sul – RS",
+    "name": "Aconteceu em Cachoeira do Sul",
+    "autor": "Por Cristiane Medianeira Avila Dias",
     "tags": ["Ditadura", "Repressão", "Movimento Estudantil", "Exílio", "Operação Condor"],
     "content": {
       "dadosBasicos": "Cachoeira do Sul localiza-se na região central do Rio Grande do Sul. A área começou a ser povoada no século XVIII, por grupos formados de indígenas guaranis, colonizadores portugueses e escravos negros, mas sua fundação ocorreu de forma oficial no ano de 1859. A cidade tem como base econômica a produção agrícola, sendo denominada de ‘‘Capital Nacional do Arroz’’. No início da década de 1960, a cidade possuía cerca de 50 mil habitantes.",
@@ -229,8 +229,8 @@
   {
     "id": 9,
     "position": [-32.5576,-53.3827],
-    "name": "Verbete Jaguarão",
-    "cityState": "Jaguarão – RS",
+    "name": "Aconteceu em Jaguarão",
+    "autor": "Por  Darlise Gonçalves de Gonçalves",
     "tags": ["Ditadura", "Fronteira", "Exílio", "Resistência", "Operação Limpeza"],
     "content": {
       "verbete": [
@@ -290,8 +290,8 @@
   {
     "id": 10,
     "position": [-31.3577,-51.9993],
-    "name": "Verbete Sao Lourenço do Sul",
-    "cityState": "Sao Lourenço do Sul – RS",
+    "name": "Aconteceu em Sao Lourenço do Sul",
+    "autor": "Por Patrícia Altenburg",
     "tags": ["Ditadura", "Repressão Política", "Movimentos Sociais", "Movimento Estudantil"],
     "content": {
       "dadosBasicos": [
@@ -356,8 +356,8 @@
   {
     "id": 11,
     "position": [-32.0376,-52.1036],
-    "name": "Verbete Rio Grande",
-    "cityState": "Rio Grande – RS",
+    "name": "Aconteceu em Rio Grande",
+    "autor": "Por Cleverton Luís Freitas de Oliveira",
     "tags": ["Ditadura", "Repressão", "Prisão Clandestina", "Colaboração Civil", "Disputas de Memória"],
     "content": {
       "dadosBasicos": "Fundada em 19 de fevereiro de 1737, a cidade localizada no extremo sul do RS, na planície costeira atlântica e a 239km em linha reta da capital Porto Alegre, é a de colonização portuguesa mais antiga do estado. Sua história é marcada por pioneirismos, tendo sido a primeira capital da província, de 1760 a 1766, e sede do primeiro porto da província em 1823, que permanece como o único porto marítimo do estado até a atualidade. Foi também uma cidade industrial, abrigando a primeira fábrica da província, a Fábrica Nacional de Tecidos e Panos de Rheingantz e Vater, em 1873, e diversas outras fábricas de tecidos, frigoríficos e bens de consumo entre as décadas de 1870 e 1950. Além disso, sediou a primeira Refinaria de Petróleo do Brasil, a Refinaria Ipiranga S.A., em 1937, que ainda está em funcionamento sob o nome Refinaria Riograndense. Nos anos 1960, de acordo com o recenseamento de 1º de setembro de 1960, o número de habitantes era de 100.378, dos quais 87.528 viviam na área urbana e 12.850 na área rural.",

@@ -37,7 +37,7 @@ export interface ContentData {
 export interface PontoData {
   id: number;
   name: string;
-  cityState: string;
+  autor: string;
   tags: string[];
   position: [number, number]; 
   content?: any;

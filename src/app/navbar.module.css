@@ -1,10 +1,11 @@
 .navContainer {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 0.5rem 0;
+  background: linear-gradient(90deg, #ffffff 0%, #f8f9fa 100%);
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.6rem 0;
   position: sticky;
   top: 0;
   z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .navContent {
@@ -16,49 +17,59 @@
   padding: 0 2rem;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #c1121f;
-  text-decoration: none;
+.logoLink img {
+  transition: transform 0.2s ease-in-out;
+}
+
+.logoLink img:hover {
+  transform: scale(1.05);
 }
 
 .navLinks {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .link {
   color: #222;
   text-decoration: none;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background 0.2s;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.25s ease;
 }
 
 .link:hover {
-  background: #f8d7da;
-  color: #c1121f;
+  background: #c1121f;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
 .dropdown {
   position: relative;
 }
 
+.dropdown button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
 .dropdownMenu {
   display: none;
   position: absolute;
-  top: 2.5rem;
+  top: 2.3rem;
   left: 0;
   background: #fff;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   min-width: 160px;
   z-index: 100;
   flex-direction: column;
+  animation: fadeIn 0.2s ease-in;
 }
 
 .dropdown:hover .dropdownMenu {
@@ -76,4 +87,9 @@
 .dropdownLink:hover {
   background: #f8d7da;
   color: #c1121f;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }

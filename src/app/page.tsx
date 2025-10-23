@@ -12,6 +12,8 @@ const MapaRS = dynamic(() => import('./map'), {
 
 export default function Home() {
   return (
-    <MapaRS />
+    <div className="flex flex-1 flex-col w-full items-center justify-between">
+      <MapaRS />
+    </div>
   );
 }

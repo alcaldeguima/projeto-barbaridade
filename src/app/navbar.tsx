@@ -22,7 +22,7 @@ export default function Navbar() {
 
         <div className={styles.navLinks}>
           <Link href="/" className={styles.link}>
-            Mapa Interativo
+            Aconteceu Aqui
           </Link>
           <Link href="/timeline" className={styles.link}>
             Linha do Tempo
@@ -31,8 +31,8 @@ export default function Navbar() {
             Temas
           </Link> 
           <div className={styles.dropdown}>
-            <button className={styles.link}>
-              Sobre o Projeto ▼
+            <button className={styles.link} style={{ cursor: 'pointer' }}>
+              Sobre o Projeto <span style={{ fontSize: '0.8rem' }}>▼</span>
             </button>
             <div className={styles.dropdownMenu}>
               <Link href="/sobre" className={styles.dropdownLink}>

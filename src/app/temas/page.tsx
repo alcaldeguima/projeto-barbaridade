@@ -39,12 +39,21 @@ export default async function TemasPage() {
     <div className={styles.container}>
       <div className={styles.content}>
         <header className={styles.header}>
-          <h1 className={styles.title}>Temas</h1>
-          <p className={styles.subtitle}>
+          {/*<h1 className={styles.title}>Temas</h1>*/}
+          <p className={styles.subtitle} style={{ textAlign: 'center', marginTop: '2rem', fontSize: '1.5rem' }}>
             Explore artigos, matérias e ensaios sobre a Ditadura Militar no Rio Grande do Sul e suas diversas facetas.
           </p>
         </header>
-        <h1>Em breve...</h1>
+        
+        <h1 style={{
+          textAlign: 'center',
+          marginTop: '3rem',
+          color: '#666',
+          fontSize: '3rem',
+          fontWeight: 500,
+          fontStyle: 'italic'
+      }}> Em breve...</h1>
+
       </div> 
     </div>
     
