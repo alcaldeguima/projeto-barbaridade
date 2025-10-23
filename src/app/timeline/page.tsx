@@ -20,7 +20,18 @@ export default function LinhaDoTempoPage() {
             allowFullScreen={true}
             frameBorder="0" // frameBorder com 'B' maiúsculo e valor como string ou número
           >
-        </iframe>       
+        </iframe>  
+        <div className="w-full max-w-4xl mx-auto px-4 py-8">
+        <p className="text-sm text-white-700 italic text-center">
+          A Linha do Tempo reproduz a Cronologia elaborada por Graciene de Ávila, 
+          Marcos Machry, Mariana Ferreira e Silva e Marla Barbosa Assumpção 
+          para a obra: Ditadura de Segurança Nacional no Rio Grande do Sul 
+          (1964-1985) : história e memória. / 
+          organizadores Enrique Serra Padrós, Vânia M. Barbosa, Vanessa Albertinence Lopez, Ananda 
+          Simões Fernandes. Porto Alegre: Corag, 2009.
+        </p>
+      </div>
+     
          </div>
         <Script id="chatling-config" strategy="afterInteractive">
         {`window.chtlConfig = { chatbotId: "6961324368" };`}
@@ -34,6 +45,7 @@ export default function LinhaDoTempoPage() {
         strategy="afterInteractive"
       />
     </div>
+    
 
     
   );

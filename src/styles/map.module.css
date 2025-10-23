@@ -6,6 +6,7 @@
   width: 100%;
   position: relative; 
   overflow: hidden; 
+  z-index: 1;
 }
 
 /* Container do mapa agora tem largura variável com transição */
